@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Интерактивные инструменты</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <div class="logo-section">
+        <img src="assets/logo.png" alt="КМКВК" class="logo">
+        <div class="header-title">
+          <h2 style="margin: 0; font-size: 18px;">КМКВК</h2>
+          <p style="margin: 0; font-size: 12px; opacity: 0.9;">Путь к военной карьере</p>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="nav-link">Главная</a></li>
+          <li><a href="vuzy.html" class="nav-link">Военные ВУЗы</a></li>
+          <li><a href="trebovaniya.html" class="nav-link">Требования</a></li>
+          <li><a href="etapy.html" class="nav-link">Этапы</a></li>
+          <li><a href="lgoty.html" class="nav-link">Льготы</a></li>
+          <li><a href="podgotovka.html" class="nav-link">Подготовка</a></li>
+          <li class="dropdown">
+            <a href="#" class="nav-link dropdown-toggle active">Инструменты <i class="fas fa-chevron-down"></i></a>
+          </li>
+          <li><a href="uspekhi.html" class="nav-link">Истории</a></li>
+          <li><a href="biblioteka.html" class="nav-link">Библиотека</a></li>
+          <li><a href="contacts.html" class="nav-link">Контакты</a></li>
+        </ul>
+        <div class="burger-menu"><span></span><span></span><span></span></div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" style="padding: 60px 24px 40px;">
+      <div class="container">
+        <h1>Интерактивные инструменты</h1>
+        <p class="hero-subtitle">Помощь в выборе ВУЗа и подготовке к поступлению</p>
+      </div>
+    </section>
+
+    <section class="section" id="podbor">
+      <div class="container">
+        <h2>Подбор ВУЗа по предметам ЕГЭ</h2>
+        <div style="background: white; padding: 30px; border-radius: 8px; border: 1px solid #ddd; margin-top: 20px;">
+          <form>
+            <div class="form-row">
+              <div class="form-group">
+                <label><input type="checkbox" value="russian"> Русский язык (обязательно)</label>
+              </div>
+              <div class="form-group">
+                <label><input type="checkbox" value="math"> Математика профильная (обязательно)</label>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label><input type="checkbox" value="physics"> Физика</label>
+              </div>
+              <div class="form-group">
+                <label><input type="checkbox" value="society"> Обществознание</label>
+              </div>
+              <div class="form-group">
+                <label><input type="checkbox" value="history"> История</label>
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary" style="margin-top: 20px;">Найти подходящие ВУЗы</button>
+          </form>
+          <div id="resultsPodbor" style="margin-top: 20px;"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background: white;" id="calc">
+      <div class="container">
+        <h2>Калькулятор баллов</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 20px;">Введите ваши баллы ЕГЭ и физподготовки для расчета итогового результата</p>
+
+        <div style="background: #f5f5f5; padding: 30px; border-radius: 8px; max-width: 600px; margin: 0 auto;">
+          <h3 style="color: #1a3a52; margin-top: 0;">Баллы ЕГЭ</h3>
+          <div class="form-group">
+            <label for="russian">Русский язык (макс. 100):</label>
+            <input type="number" id="russian" min="0" max="100" placeholder="Введите баллы">
+          </div>
+          <div class="form-group">
+            <label for="math">Математика профильная (макс. 100):</label>
+            <input type="number" id="math" min="0" max="100" placeholder="Введите баллы">
+          </div>
+          <div class="form-group">
+            <label for="third">Третий предмет (макс. 100):</label>
+            <input type="number" id="third" min="0" max="100" placeholder="Введите баллы">
+          </div>
+
+          <h3 style="color: #1a3a52; margin: 20px 0 15px 0;">Физическая подготовка</h3>
+          <div class="form-group">
+            <label for="phys">Баллы за физподготовку (макс. 100):</label>
+            <input type="number" id="phys" min="0" max="100" placeholder="Введите баллы">
+          </div>
+
+          <button type="button" class="btn btn-primary" style="width: 100%; margin-top: 20px;" onclick="calculateScore()">
+            Рассчитать итоговый балл
+          </button>
+        </div>
+        <div id="calcResult" style="margin-top: 20px;"></div>
+      </div>
+    </section>
+
+    <section class="section" id="test">
+      <div class="container">
+        <h2>Тест профориентации</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 20px;">Ответьте на вопросы, чтобы определить вашу пригодность к военной карьере</p>
+
+        <div style="background: white; padding: 30px; border-radius: 8px; border: 1px solid #ddd; max-width: 700px; margin: 0 auto;">
+          <form id="testForm">
+            <div class="form-group" style="margin-bottom: 24px;">
+              <p style="margin: 0 0 12px 0;"><strong>1. Я готов служить Родине и защищать её интересы</strong></p>
+              <label><input type="radio" name="q1" value="yes"> Да</label>
+              <label style="margin-left: 20px;"><input type="radio" name="q1" value="no"> Нет</label>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 24px;">
+              <p style="margin: 0 0 12px 0;"><strong>2. Я хорошо переношу стресс и сохраняю спокойствие в сложных ситуациях</strong></p>
+              <label><input type="radio" name="q2" value="yes"> Да</label>
+              <label style="margin-left: 20px;"><input type="radio" name="q2" value="no"> Нет</label>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 24px;">
+              <p style="margin: 0 0 12px 0;"><strong>3. Я имею хорошую физическую подготовку</strong></p>
+              <label><input type="radio" name="q3" value="yes"> Да</label>
+              <label style="margin-left: 20px;"><input type="radio" name="q3" value="no"> Нет</label>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 24px;">
+              <p style="margin: 0 0 12px 0;"><strong>4. Я ответственно отношусь к учёбе и тренировкам</strong></p>
+              <label><input type="radio" name="q4" value="yes"> Да</label>
+              <label style="margin-left: 20px;"><input type="radio" name="q4" value="no"> Нет</label>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 24px;">
+              <p style="margin: 0 0 12px 0;"><strong>5. Я готов следовать воинской дисциплине и уставам</strong></p>
+              <label><input type="radio" name="q5" value="yes"> Да</label>
+              <label style="margin-left: 20px;"><input type="radio" name="q5" value="no"> Нет</label>
+            </div>
+
+            <button type="button" class="btn btn-primary" style="width: 100%;" onclick="submitTest()">
+              Получить результаты теста
+            </button>
+          </form>
+          <div id="testResult" style="margin-top: 20px;"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-container">
+      <div class="footer-section">
+        <h3>Контактная информация</h3>
+        <p>Email: <a href="mailto:info@kmkvk.ru">info@kmkvk.ru</a></p>
+      </div>
+      <div class="footer-section">
+        <h3>Навигация</h3>
+        <ul class="footer-links">
+          <li><a href="vuzy.html">ВУЗы</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 КМКВК. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
