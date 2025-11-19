@@ -439,33 +439,125 @@ function validatePhone(phone) {
 }
 
 /* ============================================
-   ИНИЦИАЛИЗАЦИЯ TOOLTIPS
+   УПРАВЛЕНИЕ АККАУНТОМ
    ============================================ */
 
-document.querySelectorAll('[data-tooltip]').forEach(element => {
-  element.addEventListener('mouseenter', function() {
-    const tooltip = document.createElement('div');
-    tooltip.className = 'tooltip';
-    tooltip.textContent = this.getAttribute('data-tooltip');
-    tooltip.style.cssText = `
-      position: absolute;
-      background: #1a3a52;
-      color: white;
-      padding: 8px 12px;
-      border-radius: 4px;
-      font-size: 12px;
-      white-space: nowrap;
-      z-index: 1000;
-      pointer-events: none;
-    `;
-    document.body.appendChild(tooltip);
+// Состояние аутентификации
+let isAuthenticated = false;
+let currentUser = null;
 
-    const rect = this.getBoundingClientRect();
-    tooltip.style.top = (rect.top - tooltip.offsetHeight - 8) + 'px';
-    tooltip.style.left = (rect.left + rect.width / 2 - tooltip.offsetWidth / 2) + 'px';
+// Инициализация состояния аутентификации
+function initializeAuth() {
+  const userData = localStorage.getItem('kmkvk_user');
+  if (userData) {
+    currentUser = JSON.parse(userData);
+    isAuthenticated = true;
+    updateAccountUI();
+  }
+}
 
-    this.addEventListener('mouseleave', function() {
-      tooltip.remove();
-    });
-  });
+// Обновление UI в зависимости от состояния аутентификации
+function updateAccountUI() {
+  const accountLink = document.querySelector('.account-link');
+  const loginLink = document.querySelector('.login-link');
+  
+  if (accountLink) {
+    if (isAuthenticated) {
+      accountLink.style.display = 'inline-block';
+      accountLink.innerHTML = `<i class="fas fa-user"></i> ${currentUser.name}`;
+      if (loginLink) loginLink.style.display = 'none';
+    } else {
+      accountLink.style.display = 'none';
+      if (loginLink) loginLink.style.display = 'inline-block';
+    }
+  }
+}
+
+// Регистрация пользователя
+function registerUser(userData) {
+  // В реальном приложении здесь будет отправка на сервер
+  // Для демонстрации сохраним в localStorage
+  const user = {
+    id: Date.now().toString(),
+    name: userData.name,
+    email: userData.email,
+    role: 'student',
+    registrationDate: new Date().toISOString(),
+    progress: 0,
+    achievements: []
+  };
+  
+  localStorage.setItem('kmkvk_user', JSON.stringify(user));
+  currentUser = user;
+  isAuthenticated = true;
+  
+  // Перенаправление на профиль
+  window.location.href = 'profile.html';
+  return true;
+}
+
+// Вход пользователя
+function loginUser(credentials) {
+  // В реальном приложении здесь будет запрос к серверу
+  // Для демонстрации проверим в localStorage
+  const storedUser = localStorage.getItem('kmkvk_user');
+  if (storedUser) {
+    const user = JSON.parse(storedUser);
+    if (user.email === credentials.email) { // В демонстрации используем только email
+      currentUser = user;
+      isAuthenticated = true;
+      updateAccountUI();
+      return true;
+    }
+  }
+  return false;
+}
+
+// Выход из аккаунта
+function logoutUser() {
+  isAuthenticated = false;
+  currentUser = null;
+  localStorage.removeItem('kmkvk_user');
+  updateAccountUI();
+  
+  // Перенаправление на главную
+  window.location.href = 'index.html';
+}
+
+// Обновление профиля пользователя
+function updateUserProfile(profileData) {
+  if (!isAuthenticated || !currentUser) return false;
+  
+  // Обновляем данные пользователя
+  Object.assign(currentUser, profileData);
+  currentUser.updatedAt = new Date().toISOString();
+  
+  // Сохраняем обновленные данные
+  localStorage.setItem('kmkvk_user', JSON.stringify(currentUser));
+  
+  // Обновляем UI профиля если находимся на странице профиля
+  updateProfilePage();
+  
+  return true;
+}
+
+// Обновление страницы профиля
+function updateProfilePage() {
+  if (!isAuthenticated || !currentUser) return;
+  
+  const nameElement = document.querySelector('.profile-name');
+  const emailElement = document.querySelector('.profile-email');
+  const avatarElement = document.querySelector('.profile-avatar');
+  
+  if (nameElement) nameElement.textContent = currentUser.name;
+  if (emailElement) emailElement.textContent = currentUser.email;
+  if (avatarElement) avatarElement.alt = currentUser.name;
+}
+
+// Инициализация при загрузке DOM
+document.addEventListener('DOMContentLoaded', function() {
+  initializeBurgerMenu();
+  initializeAccordion();
+  initializeActiveNavLink();
+  initializeAuth();
 });

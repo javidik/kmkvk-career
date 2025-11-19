@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Личный кабинет — КМКВК</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <div class="logo-section">
+        <img src="assets/logo.png" alt="КМКВК" class="logo">
+        <div class="header-title">
+          <h2 style="margin: 0; font-size: 18px;">КМКВК</h2>
+          <p style="margin: 0; font-size: 12px; opacity: 0.9;">Путь к военной карьере</p>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="nav-link">Главная</a></li>
+          <li><a href="vuzy.html" class="nav-link">Военные ВУЗы</a></li>
+          <li><a href="trebovaniya.html" class="nav-link">Требования</a></li>
+          <li><a href="etapy.html" class="nav-link">Этапы поступления</a></li>
+          <li><a href="lgoty.html" class="nav-link">Льготы</a></li>
+          <li><a href="podgotovka.html" class="nav-link">Подготовка</a></li>
+          <li class="dropdown">
+            <a href="#" class="nav-link dropdown-toggle">Инструменты <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="instrumenty.html#podbor" class="nav-link">Подбор ВУЗа</a></li>
+              <li><a href="instrumenty.html#calc" class="nav-link">Калькулятор баллов</a></li>
+              <li><a href="instrumenty.html#test" class="nav-link">Тест профориентации</a></li>
+            </ul>
+          </li>
+          <li><a href="uspekhi.html" class="nav-link">Истории успеха</a></li>
+          <li><a href="biblioteka.html" class="nav-link">Библиотека</a></li>
+          <li><a href="contacts.html" class="nav-link">Контакты</a></li>
+          <li><a href="login.html" class="nav-link login-link" style="display: none;">Вход</a></li>
+          <li><a href="profile.html" class="nav-link account-link" style="display: inline-block;"><i class="fas fa-user"></i> Профиль</a></li>
+        </ul>
+        <div class="burger-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" style="padding: 60px 24px 40px;">
+      <div class="container">
+        <h1>Личный кабинет</h1>
+        <p class="hero-subtitle">Управление вашим аккаунтом и прогрессом</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="account-header">
+          <h2>Добро пожаловать в ваш профиль!</h2>
+          <button class="btn btn--secondary" onclick="logoutUser()">
+            <i class="fas fa-sign-out-alt"></i> Выйти
+          </button>
+        </div>
+
+        <div class="account-nav">
+          <div class="account-nav-item active" onclick="showProfileSection('profile')">Профиль</div>
+          <div class="account-nav-item" onclick="showProfileSection('progress')">Прогресс</div>
+          <div class="account-nav-item" onclick="showProfileSection('settings')">Настройки</div>
+          <div class="account-nav-item" onclick="showProfileSection('achievements')">Достижения</div>
+        </div>
+
+        <div class="account-grid">
+          <div class="account-card profile-section" id="profileSection">
+            <h3><i class="fas fa-user-circle"></i> Информация о профиле</h3>
+            
+            <div style="text-align: center; margin-bottom: var(--space-24);">
+              <img src="https://via.placeholder.com/120x120/1a3a52/ffffff?text=АВ" alt="Аватар пользователя" class="profile-avatar" id="profileAvatar">
+              <h4 class="profile-name" id="profileName">Загрузка...</h4>
+              <p class="profile-email" id="profileEmail">Загрузка...</p>
+            </div>
+            
+            <div class="profile-info">
+              <div class="profile-info-item">
+                <div class="profile-info-label">Дата регистрации</div>
+                <p class="profile-info-value" id="registrationDate">Загрузка...</p>
+              </div>
+              
+              <div class="profile-info-item">
+                <div class="profile-info-label">Статус</div>
+                <p class="profile-info-value" id="userStatus">Кадет</p>
+              </div>
+              
+              <div class="profile-info-item">
+                <div class="profile-info-label">Класс</div>
+                <p class="profile-info-value" id="studentClass">Не указан</p>
+              </div>
+            </div>
+            
+            <button class="btn btn--primary" style="margin-top: var(--space-16);" onclick="showEditProfileForm()">
+              <i class="fas fa-edit"></i> Редактировать профиль
+            </button>
+          </div>
+          
+          <div class="account-card" id="progressSection" style="display: none;">
+            <h3><i class="fas fa-chart-line"></i> Ваш прогресс</h3>
+            
+            <div class="stats-grid">
+              <div class="stat-card">
+                <p class="stat-value" id="testsCompleted">0</p>
+                <p class="stat-label">Тестов пройдено</p>
+              </div>
+              <div class="stat-card">
+                <p class="stat-value" id="materialsViewed">0</p>
+                <p class="stat-label">Материалов изучено</p>
+              </div>
+              <div class="stat-card">
+                <p class="stat-value" id="progressPercentage">0%</p>
+                <p class="stat-label">Общий прогресс</p>
+              </div>
+            </div>
+            
+            <div class="progress-container">
+              <p>Прогресс в подготовке к поступлению:</p>
+              <div class="progress-bar">
+                <div class="progress-fill" id="mainProgressBar" style="width: 0%;"></div>
+              </div>
+              <p style="text-align: right; margin-top: var(--space-4); font-size: var(--font-size-sm); color: var(--color-text-secondary);">
+                Уровень подготовки: <span id="preparationLevel">Начальный</span>
+              </p>
+            </div>
+            
+            <div style="margin-top: var(--space-16);">
+              <h4>Последние достижения:</h4>
+              <ul id="recentAchievements">
+                <li>Пройден тест профориентации</li>
+                <li>Просмотрено 5 материалов</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="account-card" id="settingsSection" style="display: none;">
+            <h3><i class="fas fa-cog"></i> Настройки аккаунта</h3>
+            
+            <div class="form-group">
+              <label for="newEmail" class="form-label">Новый email</label>
+              <input type="email" id="newEmail" class="form-input" placeholder="Введите новый email">
+            </div>
+            
+            <div class="form-group">
+              <label for="currentPassword" class="form-label">Текущий пароль</label>
+              <input type="password" id="currentPassword" class="form-input" placeholder="Введите текущий пароль">
+            </div>
+            
+            <div class="form-group">
+              <label for="newPassword" class="form-label">Новый пароль</label>
+              <input type="password" id="newPassword" class="form-input" placeholder="Введите новый пароль">
+            </div>
+            
+            <div class="form-group">
+              <label for="confirmNewPassword" class="form-label">Подтвердите новый пароль</label>
+              <input type="password" id="confirmNewPassword" class="form-input" placeholder="Подтвердите новый пароль">
+            </div>
+            
+            <button class="btn btn--primary" onclick="updateAccountSettings()">
+              <i class="fas fa-save"></i> Сохранить изменения
+            </button>
+          </div>
+          
+          <div class="account-card" id="achievementsSection" style="display: none;">
+            <h3><i class="fas fa-trophy"></i> Достижения</h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--space-16); margin-top: var(--space-16);">
+              <div style="text-align: center; padding: var(--space-16); border: 1px solid var(--color-border); border-radius: var(--radius-md);">
+                <div style="font-size: var(--font-size-3xl); color: var(--color-gold-400); margin-bottom: var(--space-8);">🏆</div>
+                <p style="margin: 0;">Тест пройден</p>
+              </div>
+              <div style="text-align: center; padding: var(--space-16); border: 1px solid var(--color-border); border-radius: var(--radius-md); opacity: 0.5;">
+                <div style="font-size: var(--font-size-3xl); color: var(--color-gray-400); margin-bottom: var(--space-8);">📚</div>
+                <p style="margin: 0;">5 материалов</p>
+              </div>
+              <div style="text-align: center; padding: var(--space-16); border: 1px solid var(--color-border); border-radius: var(--radius-md); opacity: 0.5;">
+                <div style="font-size: var(--font-size-3xl); color: var(--color-gray-400); margin-bottom: var(--space-8);">💪</div>
+                <p style="margin: 0;">Физо-результат</p>
+              </div>
+              <div style="text-align: center; padding: var(--space-16); border: 1px solid var(--color-border); border-radius: var(--radius-md); opacity: 0.5;">
+                <div style="font-size: var(--font-size-3xl); color: var(--color-gray-400); margin-bottom: var(--space-8);">🎯</div>
+                <p style="margin: 0;">Цель достигнута</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-container">
+      <div class="footer-section">
+        <h3>Контактная информация</h3>
+        <p>Email: <a href="mailto:info@kmkvk.ru">info@kmkvk.ru</a></p>
+        <p>Телефон: +7 (812) 000-00-00</p>
+      </div>
+      <div class="footer-section">
+        <h3>Социальные сети</h3>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-vk"></i> VK</a>
+          <a href="#" class="social-link"><i class="fab fa-youtube"></i> YouTube</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Навигация</h3>
+        <ul class="footer-links">
+          <li><a href="trebovaniya.html">Требования</a></li>
+          <li><a href="etapy.html">Этапы</a></li>
+          <li><a href="biblioteka.html">Библиотека</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 КМКВК. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Показать нужную секцию профиля
+    function showProfileSection(section) {
+      // Скрыть все секции
+      document.getElementById('profileSection').style.display = 'none';
+      document.getElementById('progressSection').style.display = 'none';
+      document.getElementById('settingsSection').style.display = 'none';
+      document.getElementById('achievementsSection').style.display = 'none';
+      
+      // Показать выбранную секцию
+      document.getElementById(section + 'Section').style.display = 'block';
+      
+      // Обновить активный элемент навигации
+      document.querySelectorAll('.account-nav-item').forEach(item => {
+        item.classList.remove('active');
+      });
+      event.target.classList.add('active');
+      
+      // Если это секция прогресса, обновляем данные
+      if (section === 'progress') {
+        updateProgressData();
+      }
+    }
+    
+    // Обновление данных прогресса
+    function updateProgressData() {
+      // В реальном приложении эти данные будут загружаться с сервера
+      // Для демонстрации используем случайные значения
+      document.getElementById('testsCompleted').textContent = Math.floor(Math.random() * 15);
+      document.getElementById('materialsViewed').textContent = Math.floor(Math.random() * 25);
+      const progress = Math.floor(Math.random() * 100);
+      document.getElementById('progressPercentage').textContent = progress + '%';
+      document.getElementById('mainProgressBar').style.width = progress + '%';
+      
+      // Определяем уровень подготовки
+      let level = 'Начальный';
+      if (progress >= 80) level = 'Высокий';
+      else if (progress >= 60) level = 'Хороший';
+      else if (progress >= 40) level = 'Средний';
+      
+      document.getElementById('preparationLevel').textContent = level;
+    }
+    
+    // Показать форму редактирования профиля
+    function showEditProfileForm() {
+      const currentName = document.getElementById('profileName').textContent;
+      const currentClass = document.getElementById('studentClass').textContent;
+      
+      const newName = prompt('Введите ваше имя:', currentName);
+      if (newName !== null && newName.trim() !== '') {
+        // Обновляем имя в профиле
+        document.getElementById('profileName').textContent = newName;
+        
+        // Обновляем в данных пользователя
+        if (currentUser) {
+          currentUser.name = newName;
+          localStorage.setItem('kmkvk_user', JSON.stringify(currentUser));
+        }
+        
+        alert('Имя успешно обновлено!');
+      }
+    }
+    
+    // Обновление настроек аккаунта
+    function updateAccountSettings() {
+      const newEmail = document.getElementById('newEmail').value;
+      const newPassword = document.getElementById('newPassword').value;
+      const confirmNewPassword = document.getElementById('confirmNewPassword').value;
+      
+      if (newPassword && newPassword !== confirmNewPassword) {
+        alert('Новые пароли не совпадают');
+        return;
+      }
+      
+      if (newPassword && newPassword.length < 6) {
+        alert('Пароль должен содержать не менее 6 символов');
+        return;
+      }
+      
+      if (newEmail && !validateEmail(newEmail)) {
+        alert('Пожалуйста, введите корректный email');
+        return;
+      }
+      
+      // В реальном приложении здесь будет отправка на сервер
+      // Для демонстрации просто покажем сообщение
+      alert('Настройки успешно обновлены!');
+      
+      // Обновляем email если он был изменен
+      if (newEmail && currentUser) {
+        currentUser.email = newEmail;
+        document.getElementById('profileEmail').textContent = newEmail;
+        localStorage.setItem('kmkvk_user', JSON.stringify(currentUser));
+      }
+    }
+    
+    // Обновление данных профиля при загрузке страницы
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!isAuthenticated) {
+        window.location.href = 'login.html';
+        return;
+      }
+      
+      updateProfilePage();
+      
+      // Установить начальные значения для данных пользователя
+      if (currentUser) {
+        document.getElementById('profileName').textContent = currentUser.name;
+        document.getElementById('profileEmail').textContent = currentUser.email;
+        document.getElementById('registrationDate').textContent = new Date(currentUser.registrationDate).toLocaleDateString('ru-RU');
+        
+        // Установить класс если он есть
+        if (currentUser.studentClass) {
+          const classText = currentUser.studentClass + ' класс';
+          document.getElementById('studentClass').textContent = classText;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

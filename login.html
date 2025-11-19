@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход в аккаунт — КМКВК</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <div class="logo-section">
+        <img src="assets/logo.png" alt="КМКВК" class="logo">
+        <div class="header-title">
+          <h2 style="margin: 0; font-size: 18px;">КМКВК</h2>
+          <p style="margin: 0; font-size: 12px; opacity: 0.9;">Путь к военной карьере</p>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="nav-link">Главная</a></li>
+          <li><a href="vuzy.html" class="nav-link">Военные ВУЗы</a></li>
+          <li><a href="trebovaniya.html" class="nav-link">Требования</a></li>
+          <li><a href="etapy.html" class="nav-link">Этапы поступления</a></li>
+          <li><a href="lgoty.html" class="nav-link">Льготы</a></li>
+          <li><a href="podgotovka.html" class="nav-link">Подготовка</a></li>
+          <li class="dropdown">
+            <a href="#" class="nav-link dropdown-toggle">Инструменты <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="instrumenty.html#podbor" class="nav-link">Подбор ВУЗа</a></li>
+              <li><a href="instrumenty.html#calc" class="nav-link">Калькулятор баллов</a></li>
+              <li><a href="instrumenty.html#test" class="nav-link">Тест профориентации</a></li>
+            </ul>
+          </li>
+          <li><a href="uspekhi.html" class="nav-link">Истории успеха</a></li>
+          <li><a href="biblioteka.html" class="nav-link">Библиотека</a></li>
+          <li><a href="contacts.html" class="nav-link">Контакты</a></li>
+          <li><a href="login.html" class="nav-link login-link" style="display: inline-block;">Вход</a></li>
+          <li><a href="profile.html" class="nav-link account-link" style="display: none;"><i class="fas fa-user"></i> Профиль</a></li>
+        </ul>
+        <div class="burger-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" style="padding: 60px 24px 40px;">
+      <div class="container">
+        <h1>Личный кабинет</h1>
+        <p class="hero-subtitle">Войдите в свой аккаунт для доступа к персональным материалам</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="login-container">
+          <h2 style="text-align: center; margin-bottom: var(--space-24);">Вход в аккаунт</h2>
+          
+          <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="form-group">
+              <label for="loginEmail" class="form-label">Электронная почта</label>
+              <input type="email" id="loginEmail" class="form-input" placeholder="Введите ваш email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="loginPassword" class="form-label">Пароль</label>
+              <input type="password" id="loginPassword" class="form-input" placeholder="Введите ваш пароль" required>
+            </div>
+            
+            <button type="submit" class="btn btn--primary btn-account">Войти</button>
+          </form>
+          
+          <div class="account-links">
+            <p>Нет аккаунта? <a href="register.html">Зарегистрироваться</a></p>
+            <p><a href="index.html">Вернуться на главную</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-container">
+      <div class="footer-section">
+        <h3>Контактная информация</h3>
+        <p>Email: <a href="mailto:info@kmkvk.ru">info@kmkvk.ru</a></p>
+        <p>Телефон: +7 (812) 000-00-00</p>
+      </div>
+      <div class="footer-section">
+        <h3>Социальные сети</h3>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-vk"></i> VK</a>
+          <a href="#" class="social-link"><i class="fab fa-youtube"></i> YouTube</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Навигация</h3>
+        <ul class="footer-links">
+          <li><a href="trebovaniya.html">Требования</a></li>
+          <li><a href="etapy.html">Этапы</a></li>
+          <li><a href="biblioteka.html">Библиотека</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 КМКВК. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    function handleLogin(event) {
+      event.preventDefault();
+      
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+      
+      // Простая валидация
+      if (!validateEmail(email)) {
+        alert('Пожалуйста, введите корректный email');
+        return;
+      }
+      
+      if (password.length < 6) {
+        alert('Пароль должен содержать не менее 6 символов');
+        return;
+      }
+      
+      // Попытка входа
+      const credentials = { email, password };
+      const success = loginUser(credentials);
+      
+      if (success) {
+        alert('Успешный вход! Добро пожаловать в личный кабинет.');
+        window.location.href = 'profile.html';
+      } else {
+        alert('Неверный email или пароль. Если у вас нет аккаунта, пожалуйста, зарегистрируйтесь.');
+      }
+    }
+  </script>
+</body>
+</html>
