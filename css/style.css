@@ -12,6 +12,11 @@
   --color-charcoal-700: rgba(31, 33, 33, 1);
   --color-charcoal-800: rgba(38, 40, 40, 1);
   --color-slate-900: rgba(19, 52, 59, 1);
+  --color-navy-500: rgba(26, 58, 82, 1); /* New military navy */
+  --color-navy-600: rgba(19, 42, 58, 1); /* New military navy darker */
+  --color-navy-700: rgba(15, 32, 48, 1); /* New military navy darkest */
+  --color-gold-400: rgba(212, 175, 55, 1); /* Military gold */
+  --color-gold-500: rgba(180, 150, 45, 1); /* Military gold darker */
   --color-teal-300: rgba(50, 184, 198, 1);
   --color-teal-400: rgba(45, 166, 178, 1);
   --color-teal-500: rgba(33, 128, 141, 1);
@@ -32,6 +37,11 @@
   --color-red-400-rgb: 255, 84, 89;
   --color-orange-500-rgb: 168, 75, 47;
   --color-orange-400-rgb: 230, 129, 97;
+  --color-navy-500-rgb: 26, 58, 82;
+  --color-navy-600-rgb: 19, 42, 58;
+  --color-navy-700-rgb: 15, 32, 48;
+  --color-gold-400-rgb: 212, 175, 55;
+  --color-gold-500-rgb: 180, 150, 45;
 
   /* Background color tokens (Light Mode) */
   --color-bg-1: rgba(59, 130, 246, 0.08); /* Light blue */
@@ -48,21 +58,21 @@
   --color-surface: var(--color-cream-100);
   --color-text: var(--color-slate-900);
   --color-text-secondary: var(--color-slate-500);
-  --color-primary: var(--color-teal-500);
-  --color-primary-hover: var(--color-teal-600);
-  --color-primary-active: var(--color-teal-700);
-  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
-  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
-  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
-  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
-  --color-btn-primary-text: var(--color-cream-50);
-  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
-  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-primary: var(--color-navy-500);
+  --color-primary-hover: var(--color-navy-600);
+  --color-primary-active: var(--color-navy-700);
+  --color-secondary: rgba(var(--color-gold-400-rgb), 0.12);
+  --color-secondary-hover: rgba(var(--color-gold-400-rgb), 0.2);
+  --color-secondary-active: rgba(var(--color-gold-400-rgb), 0.25);
+  --color-border: rgba(var(--color-navy-500-rgb), 0.2);
+  --color-btn-primary-text: var(--color-white);
+  --color-card-border: rgba(var(--color-navy-500-rgb), 0.12);
+  --color-card-border-inner: rgba(var(--color-navy-500-rgb), 0.12);
   --color-error: var(--color-red-500);
-  --color-success: var(--color-teal-500);
-  --color-warning: var(--color-orange-500);
+  --color-success: var(--color-navy-500);
+  --color-warning: var(--color-gold-500);
   --color-info: var(--color-slate-500);
-  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+  --color-focus-ring: rgba(var(--color-navy-500-rgb), 0.4);
   --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
 
   /* Common style patterns */
@@ -168,25 +178,25 @@
     --color-surface: var(--color-charcoal-800);
     --color-text: var(--color-gray-200);
     --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
-    --color-primary: var(--color-teal-300);
-    --color-primary-hover: var(--color-teal-400);
-    --color-primary-active: var(--color-teal-800);
-    --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
-    --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
-    --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
-    --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-primary: var(--color-gold-400);
+    --color-primary-hover: var(--color-gold-500);
+    --color-primary-active: var(--color-gold-500);
+    --color-secondary: rgba(var(--color-navy-500-rgb), 0.15);
+    --color-secondary-hover: rgba(var(--color-navy-500-rgb), 0.25);
+    --color-secondary-active: rgba(var(--color-navy-500-rgb), 0.3);
+    --color-border: rgba(var(--color-navy-500-rgb), 0.3);
     --color-error: var(--color-red-400);
-    --color-success: var(--color-teal-300);
-    --color-warning: var(--color-orange-400);
+    --color-success: var(--color-gold-400);
+    --color-warning: var(--color-gold-500);
     --color-info: var(--color-gray-300);
-    --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
-    --color-btn-primary-text: var(--color-slate-900);
-    --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
-    --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+    --color-focus-ring: rgba(var(--color-gold-400-rgb), 0.4);
+    --color-btn-primary-text: var(--color-white);
+    --color-card-border: rgba(var(--color-navy-500-rgb), 0.2);
+    --color-card-border-inner: rgba(var(--color-navy-500-rgb), 0.15);
     --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
       inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-    --button-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
-    --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
+    --button-border-secondary: rgba(var(--color-navy-500-rgb), 0.2);
+    --color-border-secondary: rgba(var(--color-navy-500-rgb), 0.2);
     --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
 
     /* Common style patterns - updated for dark mode */
@@ -228,24 +238,24 @@
   --color-surface: var(--color-charcoal-800);
   --color-text: var(--color-gray-200);
   --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
-  --color-primary: var(--color-teal-300);
-  --color-primary-hover: var(--color-teal-400);
-  --color-primary-active: var(--color-teal-800);
-  --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
-  --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
-  --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
-  --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+  --color-primary: var(--color-gold-400);
+  --color-primary-hover: var(--color-gold-500);
+  --color-primary-active: var(--color-gold-500);
+  --color-secondary: rgba(var(--color-navy-500-rgb), 0.15);
+  --color-secondary-hover: rgba(var(--color-navy-500-rgb), 0.25);
+  --color-secondary-active: rgba(var(--color-navy-500-rgb), 0.3);
+  --color-border: rgba(var(--color-navy-500-rgb), 0.3);
   --color-error: var(--color-red-400);
-  --color-success: var(--color-teal-300);
-  --color-warning: var(--color-orange-400);
+  --color-success: var(--color-gold-400);
+  --color-warning: var(--color-gold-500);
   --color-info: var(--color-gray-300);
-  --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
-  --color-btn-primary-text: var(--color-slate-900);
-  --color-card-border: rgba(var(--color-gray-400-rgb), 0.15);
-  --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+  --color-focus-ring: rgba(var(--color-gold-400-rgb), 0.4);
+  --color-btn-primary-text: var(--color-white);
+  --color-card-border: rgba(var(--color-navy-500-rgb), 0.15);
+  --color-card-border-inner: rgba(var(--color-navy-500-rgb), 0.15);
   --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
     inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-  --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
+  --color-border-secondary: rgba(var(--color-navy-500-rgb), 0.2);
   --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
 
   /* Common style patterns - updated for dark mode */
@@ -268,32 +278,37 @@
   --color-brown-600-rgb: 94, 82, 64;
   --color-teal-500-rgb: 33, 128, 141;
   --color-slate-900-rgb: 19, 52, 59;
+  --color-navy-500-rgb: 26, 58, 82;
+  --color-navy-600-rgb: 19, 42, 58;
+  --color-navy-700-rgb: 15, 32, 48;
+  --color-gold-400-rgb: 212, 175, 55;
+  --color-gold-500-rgb: 180, 150, 45;
 
   /* Semantic Color Tokens (Light Mode) */
   --color-background: var(--color-cream-50);
   --color-surface: var(--color-cream-100);
   --color-text: var(--color-slate-900);
   --color-text-secondary: var(--color-slate-500);
-  --color-primary: var(--color-teal-500);
-  --color-primary-hover: var(--color-teal-600);
-  --color-primary-active: var(--color-teal-700);
-  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
-  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
-  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
-  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
-  --color-btn-primary-text: var(--color-cream-50);
-  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
-  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-primary: var(--color-navy-500);
+  --color-primary-hover: var(--color-navy-600);
+  --color-primary-active: var(--color-navy-700);
+  --color-secondary: rgba(var(--color-gold-400-rgb), 0.12);
+  --color-secondary-hover: rgba(var(--color-gold-400-rgb), 0.2);
+  --color-secondary-active: rgba(var(--color-gold-400-rgb), 0.25);
+  --color-border: rgba(var(--color-navy-500-rgb), 0.2);
+  --color-btn-primary-text: var(--color-white);
+  --color-card-border: rgba(var(--color-navy-500-rgb), 0.12);
+  --color-card-border-inner: rgba(var(--color-navy-500-rgb), 0.12);
   --color-error: var(--color-red-500);
-  --color-success: var(--color-teal-500);
-  --color-warning: var(--color-orange-500);
+  --color-success: var(--color-navy-500);
+  --color-warning: var(--color-gold-500);
   --color-info: var(--color-slate-500);
-  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+  --color-focus-ring: rgba(var(--color-navy-500-rgb), 0.4);
 
   /* RGB versions for light mode */
-  --color-success-rgb: var(--color-teal-500-rgb);
+  --color-success-rgb: var(--color-navy-500-rgb);
   --color-error-rgb: var(--color-red-500-rgb);
-  --color-warning-rgb: var(--color-orange-500-rgb);
+  --color-warning-rgb: var(--color-gold-500-rgb);
   --color-info-rgb: var(--color-slate-500-rgb);
 }
 
@@ -2003,5 +2018,202 @@ footer {
   .social-links {
     flex-wrap: wrap;
     gap: var(--space-8);
+  }
+}
+
+/* Account and Personal Cabinet Styles */
+.account-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-16) 0;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: var(--space-24);
+}
+
+.account-nav {
+  display: flex;
+  gap: var(--space-16);
+  margin-bottom: var(--space-24);
+  overflow-x: auto;
+  padding-bottom: var(--space-8);
+}
+
+.account-nav-item {
+  padding: var(--space-8) var(--space-16);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-standard);
+  white-space: nowrap;
+}
+
+.account-nav-item.active {
+  background: var(--color-primary);
+  color: var(--color-btn-primary-text);
+}
+
+.account-nav-item:hover {
+  background: var(--color-secondary);
+}
+
+.account-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-24);
+  margin-bottom: var(--space-16);
+}
+
+.account-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-24);
+}
+
+.profile-section h3,
+.cabinet-section h3 {
+  margin-top: 0;
+  margin-bottom: var(--space-16);
+  color: var(--color-primary);
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: var(--space-16);
+  border: 3px solid var(--color-border);
+}
+
+.profile-info-item {
+  margin-bottom: var(--space-12);
+}
+
+.profile-info-label {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-4);
+}
+
+.profile-info-value {
+  color: var(--color-text);
+  margin: 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-16);
+  margin: var(--space-24) 0;
+}
+
+.stat-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-16);
+  text-align: center;
+}
+
+.stat-value {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.stat-label {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  margin: 0;
+}
+
+.progress-container {
+  margin: var(--space-16) 0;
+}
+
+.progress-bar {
+  height: 8px;
+  background: var(--color-secondary);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: var(--space-8);
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+  transition: width var(--duration-normal) var(--ease-standard);
+}
+
+.login-container,
+.register-container,
+.profile-container {
+  max-width: 500px;
+  margin: var(--space-32) auto;
+  padding: var(--space-24);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.form-group {
+  margin-bottom: var(--space-16);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--space-8);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+}
+
+.form-input {
+  width: 100%;
+  padding: var(--space-10) var(--space-12);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+  transition: border-color var(--duration-fast) var(--ease-standard);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: var(--focus-ring);
+}
+
+.btn-account {
+  width: 100%;
+  padding: var(--space-12);
+  margin-top: var(--space-16);
+}
+
+.account-links {
+  text-align: center;
+  margin-top: var(--space-16);
+  color: var(--color-text-secondary);
+}
+
+.account-links a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.account-links a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .account-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
   }
 }
