@@ -26,8 +26,6 @@
           <li><a href="podgotovka.html" class="nav-link">Подготовка</a></li>
           <li><a href="biblioteka.html" class="nav-link">Библиотека</a></li>
           <li><a href="contacts.html" class="nav-link">Контакты</a></li>
-          <li><a href="login.html" class="nav-link login-link" style="display: inline-block;">Вход</a></li>
-          <li><a href="profile.html" class="nav-link account-link" style="display: none;"><i class="fas fa-user"></i> Профиль</a></li>
         </ul>
         <div class="burger-menu">
           <span></span>
@@ -42,148 +40,70 @@
     <section class="hero" style="padding: 60px 24px 40px;">
       <div class="container">
         <h1>Каталог военных ВУЗов МО РФ</h1>
-        <p class="hero-subtitle">Выберите интересующее направление</p>
+        <p class="hero-subtitle">Выберите интересующий ВУЗ для получения подробной информации</p>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <h2>Поиск и фильтры</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 40px;">
-          <input type="text" id="searchInput" placeholder="Поиск ВУЗа..." style="padding: 12px; border: 1px solid #ddd; border-radius: 6px;" onkeyup="searchVuzy(this.value)">
-          <button data-filter="all" class="btn btn-secondary" style="margin: 0;" onclick="filterVuzyByType('all')">Все</button>
-          <button data-filter="vmf" class="btn btn-secondary" style="margin: 0;" onclick="filterVuzyByType('vmf')">ВМФ</button>
-          <button data-filter="vks" class="btn btn-secondary" style="margin: 0;" onclick="filterVuzyByType('vks')">ВКС</button>
-          <button data-filter="sukhop" class="btn btn-secondary" style="margin: 0;" onclick="filterVuzyByType('sukhop')">Сухопутные</button>
-          <button data-filter="spec" class="btn btn-secondary" style="margin: 0;" onclick="filterVuzyByType('spec')">Специальные</button>
-        </div>
-
-        <div class="grid" id="vuzyContainer">
-          <!-- ВМФ -->
-          <div class="vuzy-card" data-type="vmf" style="background: white; border: 1px solid #ddd; padding: 24px; border-radius: 8px;">
-            <span class="badge badge-success">ВМФ</span>
-            <h3>ВУНЦ ВМФ «Военно-морская академия»</h3>
-            <p><strong>Город:</strong> Санкт-Петербург</p>
-            <p><strong>Специальности:</strong> Навигация, управление кораблями, применение ракетного вооружения</p>
-            <p><strong>ЕГЭ:</strong> Русский, Математика, Физика</p>
-            <p style="color: #666; font-size: 14px;"><i class="fas fa-phone"></i> +7 (812) 000-11-11</p>
-          </div>
-
-          <div class="vuzy-card" data-type="vmf" style="background: white; border: 1px solid #ddd; padding: 24px; border-radius: 8px;">
-            <span class="badge badge-success">ВМФ</span>
-            <h3>Тихоокеанское ВВМУ</h3>
-            <p><strong>Город:</strong> Владивосток</p>
-            <p><strong>Специальности:</strong> Навигация, применение корабельных систем</p>
-            <p><strong>ЕГЭ:</strong> Русский, Математика, Физика</p>
-            <p style="color: #666; font-size: 14px;"><i class="fas fa-phone"></i> +7 (423) 000-22-22</p>
-          </div>
-
-          <div class="vuzy-card" data-type="vmf" style="background: white; border: 1px solid #ddd; padding: 24px; border-radius: 8px;">
-            <span class="badge badge-success">ВМФ</span>
-            <h3>Черноморское ВВМУ</h3>
-            <p><strong>Город:</strong> Севастополь</p>
-            <p><strong>Специальности:</strong> Судовождение, навигация, морской транспорт</p>
-            <p><strong>ЕГЭ:</strong> Русский, Математика, Физика</p>
-            <p style="color: #666; font-size: 14px;"><i class="fas fa-phone"></i> +7 (692) 000-33-33</p>
-          </div>
-
-          <!-- ВКС -->
-          <div class="vuzy-card" data-type="vks" style="background: white; border: 1px solid #ddd; padding: 24px; border-radius: 8px;">
-            <span class="badge badge-warning">ВКС</span>
-            <h3>ВУНЦ ВВС «Военно-воздушная академия»</h3>
-            <p><strong>Город:</strong> Воронеж</p>
-            <p><strong>Специальности:</strong> Летная подготовка, применение авиационных систем</p>
-            <p><strong>ЕГЭ:</strong> Русский, Математика, Физика</p>
-            <p style="color: #666; font-size: 14px;"><i class="fas fa-phone"></i> +7 (473) 000-44-44</p>
-          </div>
-
-          <div class="vuzy-card" data-type="vks" style="background: white; border: 1px solid #ddd; padding: 24px; border-radius: 8px;">
-            <span class="badge badge-warning">ВКС</span>
-            <h3>Краснодарское ВВАУЛ</h3>
-            <p><strong>Город:</strong> Краснодар</p>
-            <p><strong>Специальности:</strong> Летная подготовка, авиационная техника</p>
-            <p><strong>ЕГЭ:</strong> Русский, Математика, Физика</p>
-            <p style="color: #666; font-size: 14px;"><i class="fas fa-phone"></i> +7 (861) 000-55-55</p>
-          </div>
-
-          <!-- Сухопутные -->
-          <div class="vuzy-card" data-type="sukhop" style="background: white; border: 1px solid #ddd; padding: 24px; border-radius: 8px;">
-            <span class="badge" style="background: rgba(39,174,96,0.1); color: #27ae60;">Сухопутные</span>
-            <h3>Московское ВВКУ</h3>
-            <p><strong>Город:</strong> Москва</p>
-            <p><strong>Специальности:</strong> Командная подготовка, управление войсками</p>
-            <p><strong>ЕГЭ:</strong> Русский, Математика, Обществознание</p>
-            <p style="color: #666; font-size: 14px;"><i class="fas fa-phone"></i> +7 (495) 000-66-66</p>
-          </div>
-
-          <!-- Специальные -->
-          <div class="vuzy-card" data-type="spec" style="background: white; border: 1px solid #ddd; padding: 24px; border-radius: 8px;">
-            <span class="badge badge-danger">Специальные</span>
-            <h3>Военная академия связи</h3>
-            <p><strong>Город:</strong> Санкт-Петербург</p>
-            <p><strong>Специальности:</strong> Инфокоммуникационные системы, сетевые технологии</p>
-            <p><strong>ЕГЭ:</strong> Русский, Математика, Физика</p>
-            <p style="color: #666; font-size: 14px;"><i class="fas fa-phone"></i> +7 (812) 000-77-77</p>
-          </div>
-
-          <div class="vuzy-card" data-type="spec" style="background: white; border: 1px solid #ddd; padding: 24px; border-radius: 8px;">
-            <span class="badge badge-danger">Специальные</span>
-            <h3>Военная академия РВСН</h3>
-            <p><strong>Город:</strong> Балашиха</p>
-            <p><strong>Специальности:</strong> Ракетные комплексы, управление стратегическими системами</p>
-            <p><strong>ЕГЭ:</strong> Русский, Математика, Физика</p>
-            <p style="color: #666; font-size: 14px;"><i class="fas fa-phone"></i> +7 (495) 000-88-88</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" style="background: white;">
-      <div class="container">
-        <h2>Полная таблица ВУЗов МО РФ</h2>
-        <div class="table-responsive">
-          <table>
-            <thead>
-              <tr>
-                <th>Название ВУЗа</th>
-                <th>Город</th>
-                <th>Род войск</th>
-                <th>Главный ЕГЭ</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>ВУНЦ ВМФ «Военно-морская академия»</td>
-                <td>Санкт-Петербург</td>
-                <td>ВМФ</td>
-                <td>Физика</td>
-              </tr>
-              <tr>
-                <td>Тихоокеанское ВВМУ</td>
-                <td>Владивосток</td>
-                <td>ВМФ</td>
-                <td>Физика</td>
-              </tr>
-              <tr>
-                <td>ВУНЦ ВВС «Военно-воздушная академия»</td>
-                <td>Воронеж</td>
-                <td>ВКС</td>
-                <td>Физика</td>
-              </tr>
-              <tr>
-                <td>Московское ВВКУ</td>
-                <td>Москва</td>
-                <td>Сухопутные войска</td>
-                <td>Обществознание</td>
-              </tr>
-              <tr>
-                <td>Военная академия связи</td>
-                <td>Санкт-Петербург</td>
-                <td>Специальные войска</td>
-                <td>Физика</td>
-              </tr>
-            </tbody>
-          </table>
+        <h2>Карточки военных ВУЗов</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;">Нажмите на карточку ВУЗа для получения подробной информации</p>
+        <div class="cards-grid">
+          <a href="vuzes/военный_университет_имени_князя_александра_невского.html" class="quick-card">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Военный университет имени князя Александра Невского</h3>
+            <p>Межвидовая военная образовательная организация</p>
+          </a>
+          <a href="vuzes/военно-морская_академия_имени_адмирала_флота_советского_союза_нг_кузнецова.html" class="quick-card">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Военно-морская академия имени Адмирала Флота Советского Союза Н.Г. Кузнецова</h3>
+            <p>Ведущее военно-учебное заведение для ВМФ</p>
+          </a>
+          <a href="vuzes/рязанское_высшее_воздушно-десантное_командное_училище_имени_генерала_армии_вф_маргелова.html" class="quick-card">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Рязанское высшее воздушно-десантное командное училище имени генерала армии В.Ф. Маргелова</h3>
+            <p>Подготовка офицеров для воздушно-десантных войск</p>
+          </a>
+          <a href="vuzes/краснодарское_высшее_военное_авиационное_училище_летчиков_имени_героя_советского_союза_ак_серова.html" class="quick-card">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Краснодарское высшее военное авиационное училище летчиков имени Героя Советского Союза А.К. Серова</h3>
+            <p>Подготовка летного состава для ВКС</p>
+          </a>
+          <a href="vuzes/военная_академия_ракетных_войск_стратегического_назначения_имени_петра_великого.html" class="quick-card">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Военная академия Ракетных войск стратегического назначения имени Петра Великого</h3>
+            <p>Подготовка специалистов по ракетным системам</p>
+          </a>
+          <a href="vuzes/общевойсковая_академия_вооруженных_сил_российской_федерации.html" class="quick-card">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Общевойсковая академия Вооруженных Сил Российской Федерации</h3>
+            <p>Подготовка офицеров с высшим образованием</p>
+          </a>
+          <a href="vuzes/михайловская_военная_артиллерийская_академия.html" class="quick-card">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Михайловская военная артиллерийская академия</h3>
+            <p>Подготовка офицеров артиллерии</p>
+          </a>
+          <a href="vuzes/военная_академия_связи_имени_см_буденного.html" class="quick-card">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Военная академия связи имени С.М. Буденного</h3>
+            <p>Подготовка специалистов военной связи</p>
+          </a>
+          <a href="vuzes/военно-космическая_академия_имени_аф_можайского.html" class="quick-card">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Военно-космическая академия имени А.Ф. Можайского</h3>
+            <p>Подготовка специалистов для ВКС</p>
+          </a>
+          <a href="vuzes/военно-медицинская_академия_имени_см_кирова.html" class="quick-card">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Военно-медицинская академия имени С.М. Кирова</h3>
+            <p>Подготовка военных врачей</p>
+          </a>
+          <a href="vuzes/казанское_высшее_танковое_командное_ордена_жукова_училище.html" class="quick-card">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Казанское высшее танковое командное ордена Жукова училище</h3>
+            <p>Подготовка офицеров для танковых войск</p>
+          </a>
         </div>
       </div>
     </section>
@@ -214,7 +134,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2025 КМКВК. Все права защищены.</p>
+      <p>&copy; 2026 Информационно-методический сайт ВУЗов МО РФ. Все права защищены.</p>
     </div>
   </footer>
 

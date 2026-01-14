@@ -1,93 +1,93 @@
 :root {
-  /* Primitive Color Tokens */
+  /* Primitive Color Tokens - Improved Contrast */
   --color-white: rgba(255, 255, 255, 1);
   --color-black: rgba(0, 0, 0, 1);
-  --color-cream-50: rgba(252, 252, 249, 1);
-  --color-cream-100: rgba(255, 255, 253, 1);
-  --color-gray-200: rgba(245, 245, 245, 1);
-  --color-gray-300: rgba(167, 169, 169, 1);
-  --color-gray-400: rgba(119, 124, 124, 1);
-  --color-slate-500: rgba(98, 108, 113, 1);
+  --color-cream-50: rgba(245, 245, 240, 1); /* Slightly darker for better contrast */
+  --color-cream-100: rgba(255, 255, 250, 1); /* Slightly darker for better contrast */
+  --color-gray-200: rgba(240, 240, 240, 1); /* Darker for better contrast */
+  --color-gray-300: rgba(150, 150, 150, 1); /* Darker for better contrast */
+  --color-gray-400: rgba(100, 100, 100, 1); /* Darker for better contrast */
+  --color-slate-500: rgba(70, 80, 85, 1); /* Darker for better contrast */
   --color-brown-600: rgba(94, 82, 64, 1);
-  --color-charcoal-700: rgba(31, 33, 33, 1);
-  --color-charcoal-800: rgba(38, 40, 40, 1);
-  --color-slate-900: rgba(19, 52, 59, 1);
-  --color-navy-500: rgba(26, 58, 82, 1); /* New military navy */
-  --color-navy-600: rgba(19, 42, 58, 1); /* New military navy darker */
-  --color-navy-700: rgba(15, 32, 48, 1); /* New military navy darkest */
-  --color-gold-400: rgba(212, 175, 55, 1); /* Military gold */
-  --color-gold-500: rgba(180, 150, 45, 1); /* Military gold darker */
-  --color-teal-300: rgba(50, 184, 198, 1);
-  --color-teal-400: rgba(45, 166, 178, 1);
-  --color-teal-500: rgba(33, 128, 141, 1);
-  --color-teal-600: rgba(29, 116, 128, 1);
-  --color-teal-700: rgba(26, 104, 115, 1);
-  --color-teal-800: rgba(41, 150, 161, 1);
-  --color-red-400: rgba(255, 84, 89, 1);
-  --color-red-500: rgba(192, 21, 47, 1);
-  --color-orange-400: rgba(230, 129, 97, 1);
-  --color-orange-500: rgba(168, 75, 47, 1);
+  --color-charcoal-700: rgba(20, 20, 20, 1); /* Darker for better contrast */
+  --color-charcoal-800: rgba(30, 30, 30, 1); /* Darker for better contrast */
+  --color-slate-900: rgba(10, 30, 40, 1); /* Darker for better contrast */
+  --color-navy-500: rgba(0, 40, 70, 1); /* Stronger navy for better contrast */
+  --color-navy-600: rgba(0, 30, 50, 1); /* Stronger navy for better contrast */
+  --color-navy-700: rgba(0, 20, 40, 1); /* Stronger navy for better contrast */
+  --color-gold-400: rgba(180, 140, 30, 1); /* More saturated gold for better contrast */
+  --color-gold-500: rgba(150, 120, 30, 1); /* More saturated gold for better contrast */
+  --color-teal-300: rgba(40, 160, 175, 1); /* Adjusted for better contrast */
+  --color-teal-400: rgba(35, 140, 155, 1); /* Adjusted for better contrast */
+  --color-teal-500: rgba(25, 100, 115, 1); /* Adjusted for better contrast */
+  --color-teal-600: rgba(20, 90, 105, 1); /* Adjusted for better contrast */
+  --color-teal-700: rgba(15, 80, 95, 1); /* Adjusted for better contrast */
+  --color-teal-800: rgba(30, 120, 135, 1); /* Adjusted for better contrast */
+  --color-red-400: rgba(230, 60, 65, 1); /* Adjusted for better contrast */
+  --color-red-500: rgba(170, 10, 30, 1); /* Adjusted for better contrast */
+  --color-orange-400: rgba(210, 110, 80, 1); /* Adjusted for better contrast */
+  --color-orange-500: rgba(150, 60, 35, 1); /* Adjusted for better contrast */
 
   /* RGB versions for opacity control */
   --color-brown-600-rgb: 94, 82, 64;
-  --color-teal-500-rgb: 33, 128, 141;
-  --color-slate-900-rgb: 19, 52, 59;
-  --color-slate-500-rgb: 98, 108, 113;
-  --color-red-500-rgb: 192, 21, 47;
-  --color-red-400-rgb: 255, 84, 89;
-  --color-orange-500-rgb: 168, 75, 47;
-  --color-orange-400-rgb: 230, 129, 97;
-  --color-navy-500-rgb: 26, 58, 82;
-  --color-navy-600-rgb: 19, 42, 58;
-  --color-navy-700-rgb: 15, 32, 48;
-  --color-gold-400-rgb: 212, 175, 55;
-  --color-gold-500-rgb: 180, 150, 45;
+  --color-teal-500-rgb: 25, 100, 115; /* Updated */
+  --color-slate-900-rgb: 10, 30, 40; /* Updated */
+  --color-slate-500-rgb: 70, 80, 85; /* Updated */
+  --color-red-500-rgb: 170, 10, 30; /* Updated */
+  --color-red-400-rgb: 230, 60, 65; /* Updated */
+  --color-orange-500-rgb: 150, 60, 35; /* Updated */
+  --color-orange-400-rgb: 210, 110, 80; /* Updated */
+  --color-navy-500-rgb: 0, 40, 70; /* Updated */
+  --color-navy-600-rgb: 0, 30, 50; /* Updated */
+  --color-navy-700-rgb: 0, 20, 40; /* Updated */
+  --color-gold-400-rgb: 180, 140, 30; /* Updated */
+  --color-gold-500-rgb: 150, 120, 30; /* Updated */
 
-  /* Background color tokens (Light Mode) */
-  --color-bg-1: rgba(59, 130, 246, 0.08); /* Light blue */
-  --color-bg-2: rgba(245, 158, 11, 0.08); /* Light yellow */
-  --color-bg-3: rgba(34, 197, 94, 0.08); /* Light green */
-  --color-bg-4: rgba(239, 68, 68, 0.08); /* Light red */
-  --color-bg-5: rgba(147, 51, 234, 0.08); /* Light purple */
-  --color-bg-6: rgba(249, 115, 22, 0.08); /* Light orange */
-  --color-bg-7: rgba(236, 72, 153, 0.08); /* Light pink */
-  --color-bg-8: rgba(6, 182, 212, 0.08); /* Light cyan */
+  /* Background color tokens (Light Mode) - Increased contrast */
+  --color-bg-1: rgba(30, 100, 200, 0.15); /* Increased saturation */
+  --color-bg-2: rgba(220, 130, 0, 0.15); /* Increased saturation */
+  --color-bg-3: rgba(20, 160, 60, 0.15); /* Increased saturation */
+  --color-bg-4: rgba(210, 40, 45, 0.15); /* Increased saturation */
+  --color-bg-5: rgba(120, 30, 200, 0.15); /* Increased saturation */
+  --color-bg-6: rgba(220, 90, 0, 0.15); /* Increased saturation */
+  --color-bg-7: rgba(210, 40, 120, 0.15); /* Increased saturation */
+  --color-bg-8: rgba(0, 150, 180, 0.15); /* Increased saturation */
 
-  /* Semantic Color Tokens (Light Mode) */
+  /* Semantic Color Tokens (Light Mode) - Enhanced contrast */
   --color-background: var(--color-cream-50);
   --color-surface: var(--color-cream-100);
-  --color-text: var(--color-slate-900);
-  --color-text-secondary: var(--color-slate-500);
-  --color-primary: var(--color-navy-500);
-  --color-primary-hover: var(--color-navy-600);
-  --color-primary-active: var(--color-navy-700);
-  --color-secondary: rgba(var(--color-gold-400-rgb), 0.12);
-  --color-secondary-hover: rgba(var(--color-gold-400-rgb), 0.2);
-  --color-secondary-active: rgba(var(--color-gold-400-rgb), 0.25);
-  --color-border: rgba(var(--color-navy-500-rgb), 0.2);
-  --color-btn-primary-text: var(--color-white);
-  --color-card-border: rgba(var(--color-navy-500-rgb), 0.12);
-  --color-card-border-inner: rgba(var(--color-navy-500-rgb), 0.12);
-  --color-error: var(--color-red-500);
-  --color-success: var(--color-navy-500);
-  --color-warning: var(--color-gold-500);
-  --color-info: var(--color-slate-500);
-  --color-focus-ring: rgba(var(--color-navy-500-rgb), 0.4);
-  --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+  --color-text: var(--color-slate-900); /* Darker for better readability */
+  --color-text-secondary: var(--color-slate-500); /* Darker for better readability */
+  --color-primary: var(--color-navy-500); /* Enhanced contrast */
+  --color-primary-hover: var(--color-navy-600); /* Enhanced contrast */
+  --color-primary-active: var(--color-navy-700); /* Enhanced contrast */
+  --color-secondary: rgba(var(--color-gold-400-rgb), 0.18); /* Increased contrast */
+  --color-secondary-hover: rgba(var(--color-gold-400-rgb), 0.25); /* Increased contrast */
+  --color-secondary-active: rgba(var(--color-gold-400-rgb), 0.3); /* Increased contrast */
+  --color-border: rgba(var(--color-navy-500-rgb), 0.3); /* Increased contrast */
+  --color-btn-primary-text: var(--color-white); /* Maintained */
+  --color-card-border: rgba(var(--color-navy-500-rgb), 0.18); /* Increased contrast */
+  --color-card-border-inner: rgba(var(--color-navy-500-rgb), 0.18); /* Increased contrast */
+  --color-error: var(--color-red-500); /* Enhanced contrast */
+  --color-success: var(--color-navy-500); /* Enhanced contrast */
+  --color-warning: var(--color-gold-500); /* Enhanced contrast */
+  --color-info: var(--color-slate-500); /* Enhanced contrast */
+  --color-focus-ring: rgba(var(--color-navy-500-rgb), 0.5); /* Increased contrast */
+  --color-select-caret: rgba(var(--color-slate-900-rgb), 0.9); /* Increased contrast */
 
   /* Common style patterns */
   --focus-ring: 0 0 0 3px var(--color-focus-ring);
   --focus-outline: 2px solid var(--color-primary);
   --status-bg-opacity: 0.15;
   --status-border-opacity: 0.25;
-  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230a1e28' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); /* Updated color */
   --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 
   /* RGB versions for opacity control */
-  --color-success-rgb: 33, 128, 141;
-  --color-error-rgb: 192, 21, 47;
-  --color-warning-rgb: 168, 75, 47;
-  --color-info-rgb: 98, 108, 113;
+  --color-success-rgb: 25, 100, 115; /* Updated */
+  --color-error-rgb: 170, 10, 30; /* Updated */
+  --color-warning-rgb: 150, 60, 35; /* Updated */
+  --color-info-rgb: 70, 80, 85; /* Updated */
 
   /* Typography */
   --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
@@ -875,7 +875,7 @@ nav ul li {
 .nav-link:hover,
 .nav-link.active {
   background-color: var(--accent);
-  color: var(--color-slate-900);
+  color: var(--color-white); /* Changed to white for better contrast on gold background */
   font-weight: var(--font-weight-semibold);
 }
 
@@ -1083,14 +1083,14 @@ nav ul li {
 }
 
 .btn-primary {
-  background-color: var(--accent);
-  color: var(--color-slate-900);
+  background-color: var(--accent); /* Using gold color which was enhanced for contrast */
+  color: var(--color-white); /* Changed to white for better contrast */
 }
 
 .btn-primary:hover {
   background-color: var(--accent-light);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(var(--color-orange-500-rgb), 0.3);
+  box-shadow: 0 4px 12px rgba(var(--color-orange-500-rgb), 0.4); /* Increased shadow opacity for better visibility */
 }
 
 .btn-primary:active {
@@ -1099,18 +1099,18 @@ nav ul li {
 
 .btn-outline {
   background-color: transparent;
-  color: var(--primary);
+  color: var(--primary); /* Using navy color which was enhanced for contrast */
   border: 2px solid var(--primary);
 }
 
 .btn-outline:hover {
   background-color: var(--primary);
-  color: var(--color-cream-50);
+  color: var(--color-white); /* Changed to white for better contrast */
 }
 
 .btn-secondary {
-  background-color: var(--primary);
-  color: var(--color-cream-50);
+  background-color: var(--primary); /* Using navy color which was enhanced for contrast */
+  color: var(--color-white); /* Changed to white for better contrast */
 }
 
 .btn-secondary:hover {
