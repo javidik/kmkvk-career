@@ -58,6 +58,7 @@
   --color-surface: var(--color-cream-100);
   --color-text: var(--color-slate-900); /* Darker for better readability */
   --color-text-secondary: var(--color-slate-500); /* Darker for better readability */
+  --color-hero-text: var(--color-white); /* White text for hero sections */
   --color-primary: var(--color-navy-500); /* Enhanced contrast */
   --color-primary-hover: var(--color-navy-600); /* Enhanced contrast */
   --color-primary-active: var(--color-navy-700); /* Enhanced contrast */
@@ -178,6 +179,7 @@
     --color-surface: var(--color-charcoal-800);
     --color-text: var(--color-gray-200);
     --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+    --color-hero-text: var(--color-white); /* White text for hero sections */
     --color-primary: var(--color-gold-400);
     --color-primary-hover: var(--color-gold-500);
     --color-primary-active: var(--color-gold-500);
@@ -238,6 +240,7 @@
   --color-surface: var(--color-charcoal-800);
   --color-text: var(--color-gray-200);
   --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+  --color-hero-text: var(--color-white); /* White text for hero sections */
   --color-primary: var(--color-gold-400);
   --color-primary-hover: var(--color-gold-500);
   --color-primary-active: var(--color-gold-500);
@@ -289,6 +292,7 @@
   --color-surface: var(--color-cream-100);
   --color-text: var(--color-slate-900);
   --color-text-secondary: var(--color-slate-500);
+  --color-hero-text: var(--color-white); /* White text for hero sections */
   --color-primary: var(--color-navy-500);
   --color-primary-hover: var(--color-navy-600);
   --color-primary-active: var(--color-navy-700);
@@ -1046,12 +1050,14 @@ nav ul li {
   font-weight: var(--font-weight-bold);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   line-height: var(--line-height-tight);
+  color: var(--color-hero-text);
 }
 
 .hero-subtitle {
   font-size: var(--font-size-2xl);
   margin: 0 0 var(--space-32) 0;
   opacity: 0.95;
+  color: var(--color-hero-text);
 }
 
 /* ============================================
@@ -1221,9 +1227,9 @@ nav ul li {
   grid-template-columns: 140px 1fr;
   gap: var(--space-24);
   padding: var(--space-20);
-  background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-base);
-  border-left: 4px solid var(--accent);
+  background: var(--color-surface);
 }
 
 .timeline-date {
