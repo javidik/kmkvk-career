@@ -813,7 +813,7 @@ body {
    ============================================ */
 
 header {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  background: var(--primary);
   color: var(--color-cream-50);
   position: sticky;
   top: 0;
@@ -1038,7 +1038,7 @@ nav ul li {
    ============================================ */
 
 .hero {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  background: var(--primary);
   color: var(--color-cream-50);
   padding: 80px var(--space-24);
   text-align: center;
@@ -1479,7 +1479,7 @@ table {
 }
 
 thead {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  background: var(--primary);
   color: var(--color-cream-50);
 }
 
@@ -1546,7 +1546,7 @@ th {
 }
 
 .accordion-item.active .accordion-header {
-  background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+  background: var(--accent);
   color: var(--color-slate-900);
 }
 
@@ -1677,7 +1677,7 @@ textarea {
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--accent) 0%, var(--primary) 100%);
+  background: var(--accent);
   width: 0;
   transition: width var(--duration-normal) var(--ease-standard);
 }
@@ -1754,7 +1754,7 @@ textarea {
    ============================================ */
 
 footer {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  background: var(--primary);
   color: var(--color-cream-50);
   padding: var(--space-32) 0 var(--space-20) 0;
   margin-top: 60px;
