@@ -1,40 +1,29 @@
 ```
-# Logs and temp files
-*.log
-*.tmp
-*.swp
-
-# Environment
-.env
-.env.local
-*.env.*
-
-# Editors
-.vscode/
-.idea/
-
-# Dependencies
-node_modules/
+# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-*.so
-*.egg-info/
-.eggs/
-dist/
-build/
-.coverage
-coverage/
-htmlcov/
-.mypy_cache/
-.pytest_cache/
-.tox/
-.venv/
+.Python
+env/
 venv/
-.env/
-
-# OS generated files
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git/refs/original/
+.git/refs/original/*
+*.tmproj
+*.swp
+*.swo
+*~
 .DS_Store
 Thumbs.db
 ```
