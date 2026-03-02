@@ -1780,7 +1780,7 @@ footer {
 }
 
 .footer-section a {
-  color: var(--accent);
+  color: var(--color-white);
   text-decoration: none;
   transition: var(--transition);
 }
@@ -1819,7 +1819,7 @@ footer {
 
 .social-link:hover {
   background: var(--accent);
-  color: var(--color-slate-900);
+  color: var(--color-white);
 }
 
 .footer-bottom {
