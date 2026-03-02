@@ -2223,3 +2223,24 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+/* Contrast safety rules for content readability */
+body, main, section, .section, .card, .quick-card, .info-table, .vuz-info-table, .accordion-body {
+  color: var(--color-slate-900);
+}
+header, footer, .hero {
+  color: var(--color-cream-50);
+}
+header a, footer a, .hero a {
+  color: inherit;
+}
+section[style*="background: white"],
+section[style*="background: #fff"],
+section[style*="background: #f5f5f5"],
+section[style*="background: #f8f8f8"],
+div[style*="background: white"],
+div[style*="background: #fff"],
+div[style*="background: #f5f5f5"],
+div[style*="background: #f8f8f8"] {
+  color: var(--color-slate-900);
+}
