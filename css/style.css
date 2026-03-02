@@ -844,6 +844,7 @@ header {
   margin: 0;
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-semibold);
+  color: var(--color-white);
 }
 
 .header-title p {
@@ -1771,6 +1772,7 @@ footer {
   margin: 0 0 var(--space-12) 0;
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-medium);
+  color: var(--color-white);
 }
 
 .footer-section p {
@@ -1780,7 +1782,7 @@ footer {
 }
 
 .footer-section a {
-  color: var(--accent);
+  color: var(--color-white);
   text-decoration: none;
   transition: var(--transition);
 }
@@ -1819,7 +1821,7 @@ footer {
 
 .social-link:hover {
   background: var(--accent);
-  color: var(--color-slate-900);
+  color: var(--color-white);
 }
 
 .footer-bottom {
