@@ -20,16 +20,14 @@
       <nav>
         <ul>
           <li><a href="index.html" class="nav-link">Главная</a></li>
-          <li><a href="vuzy.html" class="nav-link">Военные ВУЗы</a></li>
+          <li><a href="vuzes/index.html" class="nav-link">Военные ВУЗы</a></li>
           <li><a href="etapy.html" class="nav-link">Этапы поступления</a></li>
-          <li><a href="lgoty.html" class="nav-link active">Льготы</a></li>
+          <li><a href="lgoty.html" class="nav-link">Льготы</a></li>
           <li><a href="podgotovka.html" class="nav-link">Подготовка</a></li>
           <li><a href="biblioteka.html" class="nav-link">Библиотека</a></li>
           <li><a href="contacts.html" class="nav-link">Контакты</a></li>
         </ul>
-        <div class="burger-menu">
-          <span></span><span></span><span></span>
-        </div>
+        <div class="burger-menu"><span></span><span></span><span></span></div>
       </nav>
     </div>
   </header>
@@ -46,80 +44,39 @@
       <div class="container">
         <h2>Виды льгот</h2>
 
-        <div class="accordion" style="margin-top: 30px;">
-          <div class="accordion-item active">
-            <div class="accordion-header">
-              <span><i class="fas fa-star"></i> Прием БЕЗ вступительных испытаний</span>
-              <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="accordion-body">
-              <p>Следующие категории граждан имеют право на прием без вступительных испытаний:</p>
-              <ul>
-                <li><strong>Победители и призеры</strong> заключительного этапа всероссийской олимпиады школьников</li>
-                <li><strong>Члены сборных команд РФ</strong> на международных олимпиадах по учебным предметам</li>
-                <li><strong>Дети участников СВО</strong>, погибших или получивших ранения при исполнении боевых задач</li>
-                <li><strong>Дети Героев РФ</strong>, награжденных подвигом, связанным с защитой государства</li>
-              </ul>
-              <p style="margin: 15px 0 0 0; padding: 12px; background: #f0f0f0; border-radius: 6px; font-size: 14px;">
-                <strong>Примечание:</strong> Такие кандидаты зачисляются без ЕГЭ, но должны пройти медицинское обследование и психотестирование.
-              </p>
-            </div>
+        <div style="display: grid; gap: 16px; margin-top: 30px;">
+          <div style="background: #f8f8f8; border: 1px solid #ddd; border-radius: 8px; padding: 18px;">
+            <h3 style="margin: 0 0 10px; color: #1a3a52;"><i class="fas fa-star" style="color:#d4af37"></i> Прием БЕЗ вступительных испытаний</h3>
+            <p>Следующие категории граждан имеют право на прием без вступительных испытаний:</p>
+            <ul>
+              <li><strong>Победители и призеры</strong> заключительного этапа всероссийской олимпиады школьников</li>
+              <li><strong>Члены сборных команд РФ</strong> на международных олимпиадах по учебным предметам</li>
+              <li><strong>Дети участников СВО</strong>, погибших или получивших ранения при исполнении боевых задач</li>
+              <li><strong>Дети Героев РФ</strong>, награжденных подвигом, связанным с защитой государства</li>
+            </ul>
           </div>
-
-          <div class="accordion-item">
-            <div class="accordion-header">
-              <span><i class="fas fa-trophy"></i> Преимущественное право (вне конкурса)</span>
-              <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="accordion-body">
-              <p>Следующие категории имеют право вне конкурса:</p>
-              <ul>
-                <li><strong>Дети-сироты</strong> и дети, оставшиеся без попечения родителей</li>
-                <li><strong>Дети военнослужащих</strong>, погибших при исполнении обязанностей военной службы</li>
-                <li><strong>Дети Героев СССР и РФ</strong> в любом случае</li>
-                <li><strong>Дети участников СВО</strong> по всем категориям (обязательно с доказательством)</li>
-                <li><strong>Граждане до 20 лет</strong> с одним родителем-инвалидом I группы</li>
-              </ul>
-              <p style="margin: 15px 0 0 0; padding: 12px; background: #f0f0f0; border-radius: 6px; font-size: 14px;">
-                <strong>Преимущество вне конкурса:</strong> Проходят поступление после общего конкурса, но раньше других претендентов.
-              </p>
-            </div>
+          <div style="background: #f8f8f8; border: 1px solid #ddd; border-radius: 8px; padding: 18px;">
+            <h3 style="margin: 0 0 10px; color: #1a3a52;"><i class="fas fa-trophy" style="color:#d4af37"></i> Преимущественное право (вне конкурса)</h3>
+            <p>Следующие категории имеют право вне конкурса:</p>
+            <ul>
+              <li><strong>Сироты и дети без попечения родителей</strong></li>
+              <li><strong>Дети-инвалиды, инвалиды I и II группы</strong></li>
+              <li><strong>Дети военнослужащих</strong>, погибших при исполнении обязанностей</li>
+              <li><strong>Дети Героев Советского Союза, Героев РФ</strong></li>
+            </ul>
+            <p style="margin-top:10px;">Также выпускники КМКВК имеют приоритет при равных баллах.</p>
           </div>
-
-          <div class="accordion-item">
-            <div class="accordion-header">
-              <span><i class="fas fa-ship"></i> Особые льготы для выпускников КМКВК</span>
-              <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="accordion-body">
-              <p>Выпускники КРОНШТАДТСКОГО МОРСКОГО КАДЕТСКОГО ВОЕННОГО КОРПУСА имеют исключительные привилегии:</p>
-              <ul>
-                <li><strong>✓ Право поступления БЕЗ ЭКЗАМЕНОВ</strong> в военные ВУЗы МО РФ</li>
-                <li><strong>✓ Приоритет</strong> при равных баллах с другими абитуриентами</li>
-                <li><strong>✓ Засчитывается</strong> 7 лет военной подготовки в корпусе как служба</li>
-                <li><strong>✓ Предпочтение</strong> при распределении по специальностям</li>
-                <li><strong>✓ Ускоренное прохождение</strong> профессионального отбора</li>
-              </ul>
-              <p style="margin: 15px 0 0 0; padding: 12px; background: #d4af37; border-radius: 6px; font-size: 14px; color: #1a3a52; font-weight: bold;">
-                Это ГЛАВНОЕ преимущество, которое получают воспитанники КМКВК!
-              </p>
-            </div>
+          <div style="background: #f8f8f8; border: 1px solid #ddd; border-radius: 8px; padding: 18px;">
+            <h3 style="margin: 0 0 10px; color: #1a3a52;"><i class="fas fa-user-shield" style="color:#d4af37"></i> Преимущества выпускников КМКВК</h3>
+            <ul>
+              <li><strong>✓ Право поступления без экзаменов</strong> в военные ВУЗы МО РФ</li>
+              <li><strong>✓ Приоритет</strong> в конкурсном отборе по специальностям</li>
+              <li><strong>✓ Ускоренное прохождение</strong> профессионального отбора</li>
+            </ul>
           </div>
-
-          <div class="accordion-item">
-            <div class="accordion-header">
-              <span><i class="fas fa-percent"></i> Квота 10% для детей участников СВО</span>
-              <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="accordion-body">
-              <p>По всем военным ВУЗам МО РФ зарезервирована квота в размере <strong>10% от контрольных цифр приема</strong> для:</p>
-              <ul>
-                <li>Детей участников специальной военной операции (СВО)</li>
-                <li>Детей погибших участников СВО</li>
-                <li>Детей раненых участников СВО</li>
-              </ul>
-              <p style="margin: 15px 0 0 0;">Это означает, что на каждый ВУЗ выделяется дополнительное место специально для этой категории.</p>
-            </div>
+          <div style="background: #f8f8f8; border: 1px solid #ddd; border-radius: 8px; padding: 18px;">
+            <h3 style="margin: 0 0 10px; color: #1a3a52;"><i class="fas fa-percent" style="color:#d4af37"></i> Квота 10% для детей участников СВО</h3>
+            <p>По всем военным ВУЗам МО РФ зарезервирована квота в размере <strong>10% от контрольных цифр приема</strong> для детей участников СВО.</p>
           </div>
         </div>
 
@@ -169,19 +126,19 @@
     <div class="container footer-container">
       <div class="footer-section">
         <h3>Контактная информация</h3>
-        <p>Email: <a href="mailto:info@kmkvk.ru">info@kmkvk.ru</a></p>
+        <p>Email: <a href="mailto:kron-mkk@mil.ru">kron-mkk@mil.ru</a></p>
+        <p>Телефоны: +8 (812)311-60-00; +8 (812) 311-14-64 (отделение кадров)</p>
       </div>
       <div class="footer-section">
         <h3>Навигация</h3>
         <ul class="footer-links">
-          <li><a href="vuzy.html">ВУЗы</a></li>
-          <li><a href="contacts.html">Контакты</a></li>
+          <li><a href="vuzes/index.html">ВУЗы</a></li>
+          <li><a href="etapy.html">Этапы поступления</a></li>
+          <li><a href="biblioteka.html">Библиотека</a></li>
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© Design by Javid Corporation © EARTH-65 version 1.6.0.1 (1) 2026</p>
-    </div>
+    <div class="footer-bottom"><p>© Design by Javid Corporation © EARTH-65 version 2.0.0.0 (1)<br>2026</p></div>
   </footer>
 
   <script src="js/main.js"></script>

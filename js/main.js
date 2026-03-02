@@ -44,16 +44,21 @@ function initializeBurgerMenu() {
    ============================================ */
 
 function initializeActiveNavLink() {
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   const navLinks = document.querySelectorAll('.nav-link');
+  const currentPath = window.location.pathname.replace(/\/+/g, '/').replace(/\/$/, '');
 
   navLinks.forEach(link => {
     const href = link.getAttribute('href');
-    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
+    if (!href) return;
+
+    const linkPath = new URL(href, window.location.href).pathname
+      .replace(/\/+/g, '/')
+      .replace(/\/$/, '');
+
+    const isMatch = linkPath === currentPath ||
+      (linkPath.endsWith('/index.html') && currentPath === linkPath.replace('/index.html', ''));
+
+    link.classList.toggle('active', isMatch);
   });
 }
 
