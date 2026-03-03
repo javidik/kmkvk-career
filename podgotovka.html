@@ -6,6 +6,145 @@
   <title>Подготовка к поступлению</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .prep-intro {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      color: var(--text-light);
+      line-height: 1.6;
+      font-size: var(--font-size-lg);
+    }
+
+    .prep-card {
+      background: var(--color-surface);
+      border: 2px solid var(--color-card-border);
+      border-radius: var(--radius-base);
+      padding: 24px;
+      box-shadow: var(--shadow-xs);
+    }
+
+    .prep-card h3 {
+      margin: 0 0 12px;
+      color: var(--primary);
+      font-size: var(--font-size-2xl);
+    }
+
+    .prep-card p,
+    .prep-card li {
+      color: var(--text-light);
+      line-height: 1.55;
+    }
+
+    .prep-card ul {
+      margin: 0;
+      padding-left: 20px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .disclaimer-box {
+      margin-top: 24px;
+      background: rgba(var(--color-orange-500-rgb), 0.08);
+      border: 1px solid rgba(var(--color-orange-500-rgb), 0.35);
+      border-left: 6px solid var(--accent);
+      border-radius: var(--radius-base);
+      padding: 20px;
+    }
+
+    .disclaimer-box h3 {
+      margin: 0 0 8px;
+      color: var(--primary);
+    }
+
+    .calc-wrap {
+      max-width: 920px;
+      margin: 0 auto;
+      background: var(--color-surface);
+      border: 1px solid var(--color-card-border);
+      border-radius: var(--radius-base);
+      padding: 24px;
+      box-shadow: var(--shadow-xs);
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .calc-item {
+      padding: 12px;
+      border: 1px solid var(--color-card-border);
+      border-radius: var(--radius-sm);
+      background: var(--color-cream-100);
+    }
+
+    .calc-item label {
+      display: block;
+      color: var(--primary);
+      font-weight: var(--font-weight-medium);
+      margin-bottom: 8px;
+    }
+
+    .calc-controls {
+      display: grid;
+      grid-template-columns: 1fr 88px;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .calc-controls input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid var(--color-card-border);
+      border-radius: var(--radius-sm);
+      background: var(--color-surface);
+      color: var(--text);
+    }
+
+    .checklist {
+      max-width: 920px;
+      margin: 0 auto;
+      background: var(--color-surface);
+      border: 1px solid var(--color-card-border);
+      border-radius: var(--radius-base);
+      padding: 20px;
+    }
+
+    .checklist ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .checklist li {
+      border: 1px solid var(--color-card-border);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      background: var(--color-cream-100);
+    }
+
+    .checklist label {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: var(--text-light);
+      line-height: 1.5;
+      cursor: pointer;
+    }
+
+    .related-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 12px;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -41,11 +180,131 @@
 
     <section class="section">
       <div class="container">
+        <p class="prep-intro">
+          В этом разделе собраны практические блоки подготовки: учебная часть, физическая форма и психологическая устойчивость.
+          Содержание носит ориентирующий характер и помогает выстроить личный план подготовки.
+        </p>
+
+        <div class="disclaimer-box">
+          <h3><i class="fas fa-triangle-exclamation" aria-hidden="true"></i> Дисклеймер</h3>
+          <p style="margin: 0; color: var(--text-light); line-height: 1.6;">
+            Информация на странице предназначена для самостоятельной подготовки. Она не заменяет официальные требования
+            приемных комиссий, медицинских и профессионально-психологических процедур отбора.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background: var(--color-surface);">
+      <div class="container">
         <h2>Три направления подготовки</h2>
         <div class="cards-grid" style="margin-top: 30px;">
-          <div class="quick-card"><i class="fas fa-book-open"></i><h3>Академическая</h3><p>Подготовка к ЕГЭ и внутренним испытаниям.</p></div>
-          <div class="quick-card"><i class="fas fa-running"></i><h3>Физическая</h3><p>Тренировки по нормативам и развитие выносливости.</p></div>
-          <div class="quick-card"><i class="fas fa-brain"></i><h3>Психологическая</h3><p>Подготовка к профотбору и собеседованию.</p></div>
+          <article class="prep-card">
+            <h3><i class="fas fa-book-open"></i> Академическая</h3>
+            <ul>
+              <li>Системная подготовка по профильным предметам и обязательным экзаменам.</li>
+              <li>Регулярная работа с вариантами заданий и контроль времени выполнения.</li>
+              <li>Проверка слабых тем и корректировка плана занятий по результатам пробных работ.</li>
+            </ul>
+          </article>
+
+          <article class="prep-card">
+            <h3><i class="fas fa-running"></i> Физическая</h3>
+            <ul>
+              <li>Тренировки по нормативам с акцентом на технику выполнения упражнений.</li>
+              <li>Постепенное увеличение нагрузки с учетом восстановления и режима сна.</li>
+              <li>Контроль динамики показателей в личном журнале тренировок.</li>
+            </ul>
+          </article>
+
+          <article class="prep-card">
+            <h3><i class="fas fa-brain"></i> Психологическая</h3>
+            <ul>
+              <li>Подготовка к собеседованию и работе в условиях ограниченного времени.</li>
+              <li>Развитие стрессоустойчивости через тренировку самоконтроля и концентрации.</li>
+              <li>Ознакомление с форматами тестов профотбора в учебных целях.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Калькулятор конкурсных баллов</h2>
+        <div class="calc-wrap">
+          <p style="margin-top: 0; color: var(--text-light); line-height: 1.6;">
+            Введите результаты для предварительной оценки. Для удобства можно использовать ползунок и точное числовое поле одновременно.
+          </p>
+
+          <div class="calc-grid">
+            <div class="calc-item">
+              <label for="russian">Русский язык</label>
+              <div class="calc-controls">
+                <input type="range" min="0" max="100" value="0" data-sync="russian">
+                <input type="number" id="russian" min="0" max="100" value="0">
+              </div>
+            </div>
+
+            <div class="calc-item">
+              <label for="math">Математика</label>
+              <div class="calc-controls">
+                <input type="range" min="0" max="100" value="0" data-sync="math">
+                <input type="number" id="math" min="0" max="100" value="0">
+              </div>
+            </div>
+
+            <div class="calc-item">
+              <label for="third">Профильный предмет</label>
+              <div class="calc-controls">
+                <input type="range" min="0" max="100" value="0" data-sync="third">
+                <input type="number" id="third" min="0" max="100" value="0">
+              </div>
+            </div>
+
+            <div class="calc-item">
+              <label for="phys">Баллы физподготовки</label>
+              <div class="calc-controls">
+                <input type="range" min="0" max="100" value="0" data-sync="phys">
+                <input type="number" id="phys" min="0" max="100" value="0">
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap;">
+            <button type="button" class="btn btn-secondary" onclick="calculateScore()">Рассчитать</button>
+            <button type="button" class="btn btn-outline" id="fillExampleBtn">Показать пример</button>
+          </div>
+
+          <div id="calcResult" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background: var(--color-surface);">
+      <div class="container">
+        <h2>Чек-лист подготовки</h2>
+        <div class="checklist">
+          <ul>
+            <li><label><input type="checkbox"> Проверить перечень вступительных испытаний в выбранных ВУЗах.</label></li>
+            <li><label><input type="checkbox"> Подготовить и упорядочить комплект личных документов.</label></li>
+            <li><label><input type="checkbox"> Отслеживать результаты пробных экзаменов и корректировать учебный план.</label></li>
+            <li><label><input type="checkbox"> Вести регулярный график физических тренировок с фиксацией результатов.</label></li>
+            <li><label><input type="checkbox"> Пройти ознакомительную подготовку по форматам психологического отбора.</label></li>
+            <li><label><input type="checkbox"> Уточнить актуальные сроки и требования на официальных ресурсах.</label></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Связанные разделы</h2>
+        <div class="related-links">
+          <a class="btn btn-secondary" href="etapy.html">Этапы поступления</a>
+          <a class="btn btn-secondary" href="biblioteka.html">Библиотека тестов</a>
+          <a class="btn btn-secondary" href="vuzes/index.html">Военные ВУЗы</a>
+          <a class="btn btn-outline" href="lgoty.html">Льготы</a>
         </div>
       </div>
     </section>
@@ -71,5 +330,44 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    function clampScore(value) {
+      const n = Number(value);
+      if (Number.isNaN(n)) return 0;
+      return Math.max(0, Math.min(100, n));
+    }
+
+    function syncInputs(id, sourceValue) {
+      const numberInput = document.getElementById(id);
+      const rangeInput = document.querySelector('input[type="range"][data-sync="' + id + '"]');
+      const safeValue = clampScore(sourceValue);
+
+      if (numberInput) numberInput.value = safeValue;
+      if (rangeInput) rangeInput.value = safeValue;
+    }
+
+    document.querySelectorAll('input[type="range"][data-sync]').forEach(range => {
+      range.addEventListener('input', function() {
+        syncInputs(this.dataset.sync, this.value);
+        calculateScore();
+      });
+    });
+
+    ['russian', 'math', 'third', 'phys'].forEach(id => {
+      const numberInput = document.getElementById(id);
+      if (!numberInput) return;
+
+      numberInput.addEventListener('input', function() {
+        syncInputs(id, this.value);
+        calculateScore();
+      });
+    });
+
+    document.getElementById('fillExampleBtn')?.addEventListener('click', function() {
+      const demo = { russian: 76, math: 72, third: 81, phys: 65 };
+      Object.entries(demo).forEach(([id, value]) => syncInputs(id, value));
+      calculateScore();
+    });
+  </script>
 </body>
 </html>
