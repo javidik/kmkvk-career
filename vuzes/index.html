@@ -44,7 +44,23 @@
       <div class="container">
         <h2>Карточки военных ВУЗов</h2>
         <p style="text-align: center; color: #666; margin-bottom: 30px;">Список сформирован по данным из таблицы.</p>
-        <div class="cards-grid">
+        
+        <div style="display:grid; gap:12px; margin: 10px 0 22px;">
+          <input id="vuzSearch" type="text" placeholder="Поиск по названию или городу" style="padding:10px; border:1px solid #ddd; border-radius:8px;">
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <select id="vuzType" style="padding:10px; border:1px solid #ddd; border-radius:8px; min-width:200px;">
+              <option value="all">Все типы</option>
+              <option value="Головной ВУЗ">Головной ВУЗ</option>
+              <option value="Филиал ВУЗ">Филиал ВУЗ</option>
+            </select>
+            <select id="vuzCity" style="padding:10px; border:1px solid #ddd; border-radius:8px; min-width:220px;">
+              <option value="all">Все города</option>
+            </select>
+          </div>
+          <p id="vuzResultCount" style="margin:0; color:#666;"></p>
+        </div>
+
+        <div class="cards-grid" id="vuzCards">
           <a href="../vuz_pages/1-военный-университет-имени-князя-александра-невского.html" class="quick-card">
             <i class="fas fa-graduation-cap"></i>
             <h3>Военный университет имени князя Александра Невского</h3>
@@ -258,6 +274,22 @@
         </div>
       </div>
     </section>
+  
+    <section class="section">
+      <div class="container">
+        <h2>Связанные разделы</h2>
+        <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin-top:12px;">
+          <a class="btn btn-secondary" href="../index.html">Главная</a>
+          <a class="btn btn-secondary" href="../vuzes/index.html">Военные ВУЗы</a>
+          <a class="btn btn-secondary" href="../etapy.html">Этапы поступления</a>
+          <a class="btn btn-secondary" href="../lgoty.html">Льготы</a>
+          <a class="btn btn-secondary" href="../podgotovka.html">Подготовка</a>
+          <a class="btn btn-secondary" href="../biblioteka.html">Библиотека</a>
+          <a class="btn btn-outline" href="../contacts.html">Контакты</a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer>
@@ -280,5 +312,50 @@
   </footer>
 
   <script src="../js/main.js"></script>
+
+  <script>
+    (function(){
+      const search = document.getElementById('vuzSearch');
+      const type = document.getElementById('vuzType');
+      const city = document.getElementById('vuzCity');
+      const cards = Array.from(document.querySelectorAll('#vuzCards .quick-card'));
+      const count = document.getElementById('vuzResultCount');
+      if (!search || !type || !city || !cards.length) return;
+
+      const cities = [...new Set(cards.map(card => (card.querySelector('p')?.textContent.split('·')[0].trim() || '')))].filter(Boolean).sort((a,b)=>a.localeCompare(b,'ru'));
+      cities.forEach(c => {
+        const opt = document.createElement('option');
+        opt.value = c;
+        opt.textContent = c;
+        city.appendChild(opt);
+      });
+
+      const apply = () => {
+        const term = search.value.toLowerCase().trim();
+        const t = type.value;
+        const c = city.value;
+        let visible = 0;
+        cards.forEach(card => {
+          const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
+          const meta = card.querySelector('p')?.textContent || '';
+          const cardCity = (meta.split('·')[0] || '').trim();
+          const cardType = (meta.split('·')[1] || '').trim();
+          const okTerm = !term || title.includes(term) || meta.toLowerCase().includes(term);
+          const okType = t === 'all' || cardType === t;
+          const okCity = c === 'all' || cardCity === c;
+          const show = okTerm && okType && okCity;
+          card.style.display = show ? '' : 'none';
+          if (show) visible++;
+        });
+        count.textContent = 'Найдено карточек: ' + visible;
+      };
+
+      search.addEventListener('input', apply);
+      type.addEventListener('change', apply);
+      city.addEventListener('change', apply);
+      apply();
+    })();
+  </script>
+
 </body>
 </html>
