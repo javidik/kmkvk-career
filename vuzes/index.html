@@ -51,7 +51,7 @@
       width: 100%;
       margin-top: 18px;
       background:
-        url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Blank_map_of_Russia-geography.svg/1200px-Blank_map_of_Russia-geography.svg.png') center/contain no-repeat,
+        url('../assets/russia-outline.svg') center 52%/94% auto no-repeat,
         radial-gradient(circle at 18% 40%, rgba(var(--color-primary-rgb), 0.16), transparent 20%),
         radial-gradient(circle at 60% 52%, rgba(var(--color-orange-500-rgb), 0.14), transparent 22%),
         linear-gradient(180deg, rgba(var(--color-primary-rgb), 0.08), rgba(255,255,255,0.96));
@@ -68,42 +68,6 @@
         linear-gradient(90deg, rgba(var(--color-primary-rgb), 0.06) 1px, transparent 1px);
       background-size: 12.5% 16.66%;
       pointer-events: none;
-    }
-
-    .map-outline {
-      position: absolute;
-      inset: 7% 4% 9%;
-      border-radius: 40px 120px 70px 60px / 50px 60px 55px 45px;
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid rgba(var(--color-primary-rgb), 0.12);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.45);
-      pointer-events: none;
-    }
-
-    .map-outline::before,
-    .map-outline::after {
-      content: "";
-      position: absolute;
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid rgba(var(--color-primary-rgb), 0.12);
-      pointer-events: none;
-    }
-
-    .map-outline::before {
-      width: 18%;
-      height: 22%;
-      left: 7%;
-      bottom: -6%;
-      border-radius: 0 0 50px 36px;
-      transform: rotate(-10deg);
-    }
-
-    .map-outline::after {
-      width: 10%;
-      height: 18%;
-      right: 8%;
-      top: -5%;
-      border-radius: 50%;
     }
 
     .map-region-label {
@@ -651,10 +615,10 @@
       };
 
       const projectionBounds = {
-        minLat: 43,
-        maxLat: 70,
+        minLat: 42,
+        maxLat: 73,
         minLng: 19,
-        maxLng: 133
+        maxLng: 170
       };
 
       const markerByCard = new Map();
@@ -662,7 +626,6 @@
       let activeMarker = null;
 
       mapElement.innerHTML = [
-        '<div class="map-outline" aria-hidden="true"></div>',
         '<span class="map-region-label west">Европейская часть</span>',
         '<span class="map-region-label center">Урал</span>',
         '<span class="map-region-label siberia">Сибирь</span>',
