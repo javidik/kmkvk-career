@@ -6,6 +6,248 @@
   <title>Военные ВУЗы МО РФ — Каталог</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .map-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+      gap: 20px;
+      align-items: start;
+      margin-bottom: 28px;
+    }
+
+    .map-panel,
+    .map-sidebar {
+      background: var(--color-surface);
+      border: 1px solid var(--color-card-border);
+      border-radius: var(--radius-base);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .map-panel {
+      overflow: hidden;
+    }
+
+    .map-toolbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 18px 20px 0;
+    }
+
+    .map-toolbar p,
+    .map-sidebar p {
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    .map-toolbar strong {
+      color: var(--primary);
+    }
+
+    #vuzMap {
+      position: relative;
+      height: 560px;
+      width: 100%;
+      margin-top: 18px;
+      background:
+        radial-gradient(circle at 18% 40%, rgba(var(--color-primary-rgb), 0.16), transparent 20%),
+        radial-gradient(circle at 60% 52%, rgba(var(--color-orange-500-rgb), 0.14), transparent 22%),
+        linear-gradient(180deg, rgba(var(--color-primary-rgb), 0.08), rgba(255,255,255,0.96));
+      border-top: 1px solid rgba(var(--color-primary-rgb), 0.12);
+      overflow: hidden;
+    }
+
+    #vuzMap::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(var(--color-primary-rgb), 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(var(--color-primary-rgb), 0.06) 1px, transparent 1px);
+      background-size: 12.5% 16.66%;
+      pointer-events: none;
+    }
+
+    .map-outline {
+      position: absolute;
+      inset: 7% 4% 9%;
+      border-radius: 40px 120px 70px 60px / 50px 60px 55px 45px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(var(--color-primary-rgb), 0.12);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.45);
+      pointer-events: none;
+    }
+
+    .map-outline::before,
+    .map-outline::after {
+      content: "";
+      position: absolute;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(var(--color-primary-rgb), 0.12);
+      pointer-events: none;
+    }
+
+    .map-outline::before {
+      width: 18%;
+      height: 22%;
+      left: 7%;
+      bottom: -6%;
+      border-radius: 0 0 50px 36px;
+      transform: rotate(-10deg);
+    }
+
+    .map-outline::after {
+      width: 10%;
+      height: 18%;
+      right: 8%;
+      top: -5%;
+      border-radius: 50%;
+    }
+
+    .map-region-label {
+      position: absolute;
+      z-index: 1;
+      color: rgba(17, 24, 39, 0.42);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      pointer-events: none;
+    }
+
+    .map-region-label.west { left: 11%; top: 28%; }
+    .map-region-label.center { left: 41%; top: 24%; }
+    .map-region-label.siberia { left: 58%; top: 42%; }
+    .map-region-label.east { right: 7%; top: 31%; }
+
+    .map-marker {
+      position: absolute;
+      z-index: 3;
+      width: 18px;
+      height: 18px;
+      border: 2px solid #fff;
+      border-radius: 999px;
+      background: var(--primary);
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.18);
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+    }
+
+    .map-marker[data-type="Филиал ВУЗ"] {
+      background: var(--accent);
+    }
+
+    .map-marker:hover,
+    .map-marker:focus-visible,
+    .map-marker.is-active {
+      transform: translate(-50%, -50%) scale(1.18);
+      box-shadow: 0 0 0 4px rgba(var(--color-primary-rgb), 0.16), 0 10px 22px rgba(15, 23, 42, 0.18);
+      outline: none;
+    }
+
+    .map-marker.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .map-legend {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 12px 20px 0;
+    }
+
+    .map-legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-light);
+      font-size: 14px;
+    }
+
+    .map-legend i {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      display: inline-block;
+    }
+
+    .map-legend .head i {
+      background: var(--primary);
+    }
+
+    .map-legend .branch i {
+      background: var(--accent);
+    }
+
+    .map-sidebar {
+      padding: 20px;
+    }
+
+    .map-sidebar h3 {
+      margin-bottom: 12px;
+      color: var(--primary);
+    }
+
+    .map-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .map-stat {
+      border-radius: 14px;
+      background: rgba(var(--color-primary-rgb), 0.08);
+      padding: 14px;
+    }
+
+    .map-stat strong {
+      display: block;
+      color: var(--primary);
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .map-stat span {
+      color: var(--text-light);
+      font-size: 14px;
+    }
+
+    .map-hint-list {
+      margin: 16px 0 0;
+      padding-left: 18px;
+      color: var(--text-light);
+      display: grid;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .map-selection {
+      border-radius: 16px;
+      background: rgba(var(--color-primary-rgb), 0.06);
+      padding: 16px;
+      margin-top: 18px;
+    }
+
+    .quick-card-active {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.18), var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 980px) {
+      .map-layout {
+        grid-template-columns: 1fr;
+      }
+
+      #vuzMap {
+        height: 460px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -42,9 +284,54 @@
 
     <section class="section">
       <div class="container">
+        <h2>Интерактивная карта ВУЗов</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;">Карта показывает расположение военных ВУЗов и филиалов по городам. Маркеры связаны с фильтрами ниже: при поиске и выборе города на карте останутся только подходящие варианты.</p>
+
+        <div class="map-layout">
+          <div class="map-panel">
+            <div class="map-toolbar">
+              <p><strong>Навигация:</strong> кликните по маркеру, чтобы открыть краткую информацию о ВУЗе и перейти на его страницу.</p>
+              <p id="vuzMapStatus">Загрузка карты…</p>
+            </div>
+            <div class="map-legend">
+              <span class="head"><i></i> Головной ВУЗ</span>
+              <span class="branch"><i></i> Филиал ВУЗ</span>
+            </div>
+            <div id="vuzMap" aria-label="Интерактивная карта военных ВУЗов"></div>
+          </div>
+
+          <aside class="map-sidebar">
+            <h3>Что можно сделать на карте</h3>
+            <p>Используйте карту как быстрый навигатор по географии поступления: сравните концентрацию ВУЗов по регионам, найдите ближайший город и затем откройте карточку учебного заведения.</p>
+
+            <div class="map-stats">
+              <div class="map-stat">
+                <strong id="mapVisibleCount">0</strong>
+                <span>ВУЗов показано</span>
+              </div>
+              <div class="map-stat">
+                <strong id="mapCityCount">0</strong>
+                <span>городов на карте</span>
+              </div>
+            </div>
+
+            <ul class="map-hint-list">
+              <li>Маркеры немного разнесены внутри одного города, чтобы удобно выбирать ВУЗы в Санкт-Петербурге, Москве и других городах с несколькими учебными заведениями.</li>
+              <li>Поиск и фильтры синхронизируются с картой автоматически.</li>
+              <li>Если хотите вернуться к полному охвату, просто очистите поле поиска и сбросьте фильтры.</li>
+            </ul>
+
+            <div class="map-selection">
+              <h3 id="mapSelectionTitle" style="margin:0 0 10px;">Выберите маркер</h3>
+              <p id="mapSelectionMeta" style="margin:0 0 12px;">Клик по точке на карте покажет город, тип ВУЗа и даст быстрый переход к подробной странице.</p>
+              <a id="mapSelectionLink" class="btn btn-secondary" href="../vuzes/index.html">Открыть раздел</a>
+            </div>
+          </aside>
+        </div>
+
         <h2>Карточки военных ВУЗов</h2>
         <p style="text-align: center; color: #666; margin-bottom: 30px;">Список сформирован по данным из таблицы.</p>
-        
+
         <div style="display:grid; gap:12px; margin: 10px 0 22px;">
           <input id="vuzSearch" type="text" placeholder="Поиск по названию или городу" style="padding:10px; border:1px solid #ddd; border-radius:8px;">
           <div style="display:flex; gap:10px; flex-wrap:wrap;">
@@ -320,9 +607,77 @@
       const city = document.getElementById('vuzCity');
       const cards = Array.from(document.querySelectorAll('#vuzCards .quick-card'));
       const count = document.getElementById('vuzResultCount');
-      if (!search || !type || !city || !cards.length) return;
+      const mapElement = document.getElementById('vuzMap');
+      const mapStatus = document.getElementById('vuzMapStatus');
+      const mapVisibleCount = document.getElementById('mapVisibleCount');
+      const mapCityCount = document.getElementById('mapCityCount');
+      const mapSelectionTitle = document.getElementById('mapSelectionTitle');
+      const mapSelectionMeta = document.getElementById('mapSelectionMeta');
+      const mapSelectionLink = document.getElementById('mapSelectionLink');
+      if (!search || !type || !city || !cards.length || !mapElement) return;
 
-      const cities = [...new Set(cards.map(card => (card.querySelector('p')?.textContent.split('·')[0].trim() || '')))].filter(Boolean).sort((a,b)=>a.localeCompare(b,'ru'));
+      const cityCoordinates = {
+        'Москва': [55.7558, 37.6173],
+        'Санкт-Петербург': [59.9343, 30.3351],
+        'Воронеж': [51.6608, 39.2003],
+        'Балашиха': [55.7963, 37.9382],
+        'Смоленск': [54.7818, 32.0401],
+        'Владивосток': [43.1155, 131.8855],
+        'Севастополь': [44.6166, 33.5254],
+        'Калининград': [54.7104, 20.4522],
+        'Рязань': [54.6292, 39.7364],
+        'Казань': [55.7961, 49.1064],
+        'Новосибирск': [55.0084, 82.9357],
+        'Благовещенск': [50.2907, 127.5272],
+        'Тюмень': [57.1530, 65.5343],
+        'Череповец': [59.1269, 37.9092],
+        'Кострома': [57.7679, 40.9269],
+        'Тверь': [56.8587, 35.9176],
+        'Ярославль': [57.6261, 39.8845],
+        'Сызрань': [53.1558, 48.4743],
+        'Челябинск': [55.1644, 61.4368],
+        'Ульяновск': [54.3142, 48.4031],
+        'Омск': [54.9885, 73.3242],
+        'Вольск': [52.0454, 47.3872],
+        'Пенза': [53.2007, 45.0046],
+        'Мурманск': [68.9585, 33.0827],
+        'Ростов-на-Дону': [47.2357, 39.7015],
+        'Мончегорск': [67.9381, 32.9350],
+        'Псков': [57.8193, 28.3318],
+        'Екатеринбург': [56.8389, 60.6057],
+        'Самара': [53.1959, 50.1008],
+        'Краснодар': [45.0355, 38.9753]
+      };
+
+      const projectionBounds = {
+        minLat: 43,
+        maxLat: 70,
+        minLng: 19,
+        maxLng: 133
+      };
+
+      const markerByCard = new Map();
+      const cityUsage = new Map();
+      let activeMarker = null;
+
+      mapElement.innerHTML = [
+        '<div class="map-outline" aria-hidden="true"></div>',
+        '<span class="map-region-label west">Европейская часть</span>',
+        '<span class="map-region-label center">Урал</span>',
+        '<span class="map-region-label siberia">Сибирь</span>',
+        '<span class="map-region-label east">Дальний Восток</span>'
+      ].join('');
+
+      const setSelection = ({ title, meta, href }) => {
+        if (mapSelectionTitle) mapSelectionTitle.textContent = title;
+        if (mapSelectionMeta) mapSelectionMeta.textContent = meta;
+        if (mapSelectionLink) mapSelectionLink.href = href;
+      };
+
+      const cities = [...new Set(cards.map(card => (card.querySelector('p')?.textContent.split('·')[0].trim() || '')))]
+        .filter(Boolean)
+        .sort((a, b) => a.localeCompare(b, 'ru'));
+
       cities.forEach(c => {
         const opt = document.createElement('option');
         opt.value = c;
@@ -330,24 +685,117 @@
         city.appendChild(opt);
       });
 
+      const getOffsetCoordinates = (cityName) => {
+        const base = cityCoordinates[cityName];
+        if (!base) return null;
+        const usage = cityUsage.get(cityName) || 0;
+        cityUsage.set(cityName, usage + 1);
+        if (usage === 0) return base;
+        const ring = Math.floor((usage - 1) / 6) + 1;
+        const position = (usage - 1) % 6;
+        const angle = (Math.PI * 2 * position) / 6;
+        const radius = 0.09 * ring;
+        const latOffset = Math.sin(angle) * radius;
+        const lngOffset = Math.cos(angle) * radius;
+        return [base[0] + latOffset, base[1] + lngOffset];
+      };
+
+      const projectToMap = ([lat, lng]) => {
+        const x = ((lng - projectionBounds.minLng) / (projectionBounds.maxLng - projectionBounds.minLng)) * 100;
+        const y = (1 - (lat - projectionBounds.minLat) / (projectionBounds.maxLat - projectionBounds.minLat)) * 100;
+        return {
+          x: Math.max(6, Math.min(94, x)),
+          y: Math.max(10, Math.min(90, y))
+        };
+      };
+
+      cards.forEach(card => {
+        const title = card.querySelector('h3')?.textContent.trim() || '';
+        const meta = card.querySelector('p')?.textContent || '';
+        const cardCity = (meta.split('·')[0] || '').trim();
+        const cardType = (meta.split('·')[1] || '').trim();
+        const href = card.getAttribute('href') || '#';
+        const coords = getOffsetCoordinates(cardCity);
+        if (!coords) return;
+
+        const projected = projectToMap(coords);
+        const marker = document.createElement('button');
+        marker.type = 'button';
+        marker.className = 'map-marker';
+        marker.dataset.type = cardType;
+        marker.dataset.city = cardCity;
+        marker.style.left = projected.x + '%';
+        marker.style.top = projected.y + '%';
+        marker.title = title + ' — ' + cardCity;
+        marker.setAttribute('aria-label', title + ', ' + cardCity + ', ' + cardType);
+
+        marker.addEventListener('click', () => {
+          if (activeMarker) activeMarker.classList.remove('is-active');
+          marker.classList.add('is-active');
+          activeMarker = marker;
+          setSelection({ title, meta: cardCity + ' · ' + cardType, href });
+          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          card.classList.add('quick-card-active');
+          window.setTimeout(() => card.classList.remove('quick-card-active'), 1800);
+        });
+
+        mapElement.appendChild(marker);
+        markerByCard.set(card, marker);
+      });
+
+      setSelection({
+        title: 'Выберите маркер',
+        meta: 'Клик по точке на карте покажет город, тип ВУЗа и даст быстрый переход к подробной странице.',
+        href: '../vuzes/index.html'
+      });
+
       const apply = () => {
         const term = search.value.toLowerCase().trim();
-        const t = type.value;
-        const c = city.value;
+        const selectedType = type.value;
+        const selectedCity = city.value;
         let visible = 0;
+        const visibleCities = new Set();
+
         cards.forEach(card => {
           const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
           const meta = card.querySelector('p')?.textContent || '';
           const cardCity = (meta.split('·')[0] || '').trim();
           const cardType = (meta.split('·')[1] || '').trim();
           const okTerm = !term || title.includes(term) || meta.toLowerCase().includes(term);
-          const okType = t === 'all' || cardType === t;
-          const okCity = c === 'all' || cardCity === c;
+          const okType = selectedType === 'all' || cardType === selectedType;
+          const okCity = selectedCity === 'all' || cardCity === selectedCity;
           const show = okTerm && okType && okCity;
+          const marker = markerByCard.get(card);
+
           card.style.display = show ? '' : 'none';
-          if (show) visible++;
+          if (marker) marker.classList.toggle('is-hidden', !show);
+
+          if (show) {
+            visible++;
+            visibleCities.add(cardCity);
+          }
         });
+
         count.textContent = 'Найдено карточек: ' + visible;
+        if (mapVisibleCount) mapVisibleCount.textContent = String(visible);
+        if (mapCityCount) mapCityCount.textContent = String(visibleCities.size);
+        if (mapStatus) {
+          mapStatus.textContent = visible
+            ? 'Показано ВУЗов: ' + visible + ' · городов: ' + visibleCities.size
+            : 'По текущим фильтрам совпадений нет';
+        }
+
+        if (activeMarker && activeMarker.classList.contains('is-hidden')) {
+          activeMarker.classList.remove('is-active');
+          activeMarker = null;
+          setSelection({
+            title: visible ? 'Выберите маркер' : 'Совпадений не найдено',
+            meta: visible
+              ? 'Клик по точке на карте покажет город, тип ВУЗа и даст быстрый переход к подробной странице.'
+              : 'Измените строку поиска или параметры фильтра, чтобы снова увидеть точки на карте.',
+            href: '../vuzes/index.html'
+          });
+        }
       };
 
       search.addEventListener('input', apply);
@@ -356,6 +804,5 @@
       apply();
     })();
   </script>
-
 </body>
 </html>
