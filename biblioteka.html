@@ -12,6 +12,13 @@
     .tests-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 18px; margin-top: 24px; }
     .test-card { background: var(--color-surface); border: 1px solid var(--color-card-border); border-radius: var(--radius-base); padding: 20px; }
     .test-card h3 { margin: 0 0 12px; color: var(--primary); font-size: var(--font-size-xl); line-height: 1.35; }
+    .video-links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; margin-top: 24px; }
+    .video-card { background: var(--color-surface); border: 1px solid var(--color-card-border); border-radius: var(--radius-base); padding: 20px; box-shadow: var(--shadow-sm); }
+    .video-card h3 { margin: 0 0 12px; color: var(--primary); font-size: var(--font-size-xl); line-height: 1.35; }
+    .video-card p { margin: 0 0 10px; color: var(--text-light); line-height: 1.6; }
+    .video-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .video-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; background: rgba(var(--color-primary-rgb), 0.1); color: var(--primary); font-size: 14px; font-weight: 600; }
+    .video-card .actions { margin-top: 16px; }
     .links-list { margin: 0; padding-left: 18px; display: grid; gap: 8px; }
     .links-list a { color: var(--primary); text-decoration: none; word-break: break-word; }
     .links-list a:hover { text-decoration: underline; }
@@ -28,6 +35,83 @@
       <div class="container">
         <p class="library-intro">Раздел содержит подборку распространённых профориентационных методик и сторонних ресурсов для самостоятельного ознакомления. Материалы помогают определить профессиональные интересы и личностные склонности.</p>
         <div class="disclaimer-box"><h3 style="margin:0 0 10px; color:var(--primary);"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i> Дисклеймер</h3><p style="margin:0; color:var(--text-light); line-height:1.6;">Онлайн-тесты размещены только для ознакомления и самоподготовки. Результаты не являются официальным заключением и не заменяют профессиональную консультацию.</p></div>
+      </div>
+    </section>
+
+    <section class="section" style="background: linear-gradient(180deg, rgba(var(--color-primary-rgb), 0.04) 0%, rgba(var(--color-primary-rgb), 0.01) 100%);">
+      <div class="container">
+        <h2>Актуальные видеоматериалы на Rutube</h2>
+        <p style="text-align:center; color: var(--text-light); margin: 0 auto 24px; max-width: 980px;">Подборка обновлена по состоянию на март 2026 года. Включены ролики по профориентации, знакомству с военными специальностями и материалам для абитуриентов, поступающих в ВУЗы Минобороны России.</p>
+        <div class="video-links-grid">
+          <article class="video-card">
+            <h3>Россия безопасная: вооруженные силы, гражданская оборона</h3>
+            <div class="video-meta">
+              <span class="video-badge"><i class="fas fa-video"></i> Rutube</span>
+              <span class="video-badge"><i class="fas fa-calendar"></i> Август 2025</span>
+            </div>
+            <p>Видеоурок из официального проекта «Билет в будущее» помогает школьникам понять, какие направления связаны с вооружёнными силами, безопасностью страны и гражданской обороной.</p>
+            <div class="actions">
+              <a class="btn btn-secondary" href="https://rutube.ru/plst/1137520/" target="_blank" rel="noopener noreferrer">Смотреть плейлист</a>
+              <a class="btn btn-outline" href="https://rutube.ru/channel/36571257/videos/" target="_blank" rel="noopener noreferrer">Канал «Билет в будущее»</a>
+            </div>
+          </article>
+          <article class="video-card">
+            <h3>Как поступить в военный вуз МО РФ</h3>
+            <div class="video-meta">
+              <span class="video-badge"><i class="fas fa-user-graduate"></i> Для абитуриентов</span>
+              <span class="video-badge"><i class="fas fa-calendar"></i> Июнь 2025</span>
+            </div>
+            <p>Короткое интервью о порядке отбора кандидатов, пакете документов, медкомиссии, профотборе и сроках подачи документов в высшие военные учебные заведения Минобороны РФ.</p>
+            <div class="actions">
+              <a class="btn btn-secondary" href="https://rutube.ru/video/eb5922dbb3fd823d5fc858774d0d96ae/" target="_blank" rel="noopener noreferrer">Открыть видео</a>
+            </div>
+          </article>
+          <article class="video-card">
+            <h3>Карьера офицера: военкомат начал приём документов</h3>
+            <div class="video-meta">
+              <span class="video-badge"><i class="fas fa-circle-info"></i> Приём документов</span>
+              <span class="video-badge"><i class="fas fa-calendar"></i> Март 2026</span>
+            </div>
+            <p>Короткий свежий сюжет о начале приёма документов в военные вузы, базовых требованиях к кандидатам и первых шагах абитуриента при обращении в военкомат.</p>
+            <div class="actions">
+              <a class="btn btn-secondary" href="https://rutube.ru/video/eab180bf411ccd118e6568be3e86c909/" target="_blank" rel="noopener noreferrer">Открыть видео</a>
+            </div>
+          </article>
+          <article class="video-card">
+            <h3>Есть такая профессия РВСН</h3>
+            <div class="video-meta">
+              <span class="video-badge"><i class="fas fa-shield-halved"></i> Минобороны России</span>
+              <span class="video-badge"><i class="fas fa-calendar"></i> Январь 2026</span>
+            </div>
+            <p>Официальный ролик Минобороны России о поступлении в Военную академию РВСН имени Петра Великого. Полезен для знакомства с современными инженерными и высокотехнологичными военными специальностями.</p>
+            <div class="actions">
+              <a class="btn btn-secondary" href="https://rutube.ru/video/180f5e9c38a7a4dd13893e1deae30059/" target="_blank" rel="noopener noreferrer">Открыть видео</a>
+              <a class="btn btn-outline" href="https://varvsn.mil.ru/Postupayuschim/kursantam/Pravila-postupleniya" target="_blank" rel="noopener noreferrer">Правила приёма 2026</a>
+            </div>
+          </article>
+          <article class="video-card">
+            <h3>Военная академия РХБ защиты имени С.К. Тимошенко</h3>
+            <div class="video-meta">
+              <span class="video-badge"><i class="fas fa-flask"></i> Специальности ВУЗа</span>
+              <span class="video-badge"><i class="fas fa-calendar"></i> Февраль 2026</span>
+            </div>
+            <p>Актуальный короткий ролик Минобороны России для абитуриентов, интересующихся направлениями радиационной, химической и биологической защиты, инженерной подготовкой и военной службой по профильным специальностям.</p>
+            <div class="actions">
+              <a class="btn btn-secondary" href="https://rutube.ru/video/e7a7071bf2a87794b35048cb85e31703/" target="_blank" rel="noopener noreferrer">Открыть видео</a>
+            </div>
+          </article>
+          <article class="video-card">
+            <h3>Профориентация подростков. Поговорим о важном</h3>
+            <div class="video-meta">
+              <span class="video-badge"><i class="fas fa-compass"></i> Профориентация</span>
+              <span class="video-badge"><i class="fas fa-calendar"></i> Январь 2025</span>
+            </div>
+            <p>Видео о том, как подойти к выбору профессии, когда начинать профориентацию, как учитывать интересы подростка и какие шаги помогают сузить круг подходящих направлений обучения.</p>
+            <div class="actions">
+              <a class="btn btn-secondary" href="https://rutube.ru/video/811101876414e144470ceaaeedeaf261/" target="_blank" rel="noopener noreferrer">Открыть видео</a>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
