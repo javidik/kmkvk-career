@@ -14,9 +14,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function initializeBurgerMenu() {
   const burgerMenu = document.querySelector('.burger-menu');
-  const nav = document.querySelector('nav');
+  const nav = document.querySelector('header nav');
 
-  if (burgerMenu) {
+  if (burgerMenu && nav) {
     burgerMenu.addEventListener('click', function(e) {
       e.preventDefault();
       nav.classList.toggle('open');
