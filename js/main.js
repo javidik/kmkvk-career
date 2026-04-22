@@ -17,10 +17,14 @@ function initializeBurgerMenu() {
   const nav = document.querySelector('nav');
 
   if (burgerMenu) {
-    burgerMenu.addEventListener('click', function(e) {
+    // Используем touchstart для лучшей реакции на мобильных устройствах
+    const clickEvent = 'ontouchstart' in window ? 'touchstart' : 'click';
+    
+    burgerMenu.addEventListener(clickEvent, function(e) {
       e.preventDefault();
+      e.stopPropagation();
       nav.classList.toggle('open');
-    });
+    }, { passive: true });
 
     // Закрыть меню при клике на ссылку
     const navLinks = nav.querySelectorAll('.nav-link');
