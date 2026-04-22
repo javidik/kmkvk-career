@@ -860,6 +860,7 @@ nav ul {
   padding: 0;
   gap: var(--space-4);
   flex-wrap: wrap;
+  align-items: center;
 }
 
 nav ul li {
@@ -950,12 +951,19 @@ nav ul li {
 }
 
 /* ============================================
-   RESPONSIVE: МОБИЛЬНОЕ МЕНЮ
+   RESPONSIVE: МОБИЛЬНОЕ МЕНЮ - ОТКРЫТЫЙ БЛОК С КНОПКАМИ
    ============================================ */
 
 @media (max-width: 768px) {
   .header-container {
+    flex-direction: column;
+    align-items: stretch;
     padding: var(--space-12) var(--space-16);
+  }
+
+  .logo-section {
+    justify-content: center;
+    margin-bottom: var(--space-12);
   }
 
   .logo {
@@ -966,44 +974,59 @@ nav ul li {
     font-size: var(--font-size-lg);
   }
 
+  /* Скрываем бургер-меню в мобильной версии */
   .burger-menu {
-    display: flex;
+    display: none !important;
   }
 
+  /* Показываем навигацию как открытый блок кнопок */
   nav ul {
-    position: absolute;
-    top: 70px;
-    left: 0;
-    right: 0;
+    position: static;
     flex-direction: column;
-    background: var(--primary);
-    padding: var(--space-12) 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height var(--duration-normal) var(--ease-standard);
-    gap: 0;
+    background: transparent;
+    padding: var(--space-16) 0 0 0;
+    max-height: none;
+    overflow: visible;
+    gap: var(--space-12);
+    width: 100%;
   }
 
   nav.open ul {
-    max-height: 500px;
+    max-height: none;
   }
 
   nav ul li {
     width: 100%;
   }
 
+  /* Стилизация кнопок в мобильной версии */
   .nav-link {
-    padding: var(--space-12) var(--space-20);
-    border-radius: 0;
+    display: block;
+    padding: var(--space-16) var(--space-20);
+    border-radius: var(--radius-base);
+    background: rgba(var(--color-navy-500-rgb), 0.08);
+    border: 1px solid rgba(var(--color-navy-500-rgb), 0.15);
+    text-align: center;
+    font-weight: var(--font-weight-medium);
+    transition: all var(--duration-normal) var(--ease-standard);
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    background: rgba(var(--color-navy-500-rgb), 0.15);
+    border-color: rgba(var(--color-navy-500-rgb), 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
   .dropdown-menu {
     position: static;
-    display: none;
-    background: var(--primary-light);
+    display: block;
+    background: transparent;
     box-shadow: none;
     margin: 0;
     border-radius: 0;
+    padding-left: var(--space-20);
   }
 
   .dropdown.open .dropdown-menu {
@@ -1029,7 +1052,7 @@ nav ul li {
   }
 
   .nav-link {
-    padding: var(--space-10) var(--space-16);
+    padding: var(--space-12) var(--space-16);
     font-size: var(--font-size-sm);
   }
 }
