@@ -13,30 +13,86 @@ document.addEventListener('DOMContentLoaded', function() {
    ============================================ */
 
 function initializeBurgerMenu() {
-  const burgerMenu = document.querySelector('.burger-menu');
-  const nav = document.querySelector('nav');
+  const headerNavs = document.querySelectorAll('header nav');
 
-  if (burgerMenu) {
+  if (!headerNavs.length) {
+    return;
+  }
+
+  const closeMenu = (nav) => {
+    nav.classList.remove('open');
+    const burgerMenu = nav.querySelector('.burger-menu');
+    if (burgerMenu) {
+      burgerMenu.setAttribute('aria-expanded', 'false');
+    }
+  };
+
+  const toggleMenu = (nav) => {
+    const burgerMenu = nav.querySelector('.burger-menu');
+    const isOpen = nav.classList.toggle('open');
+    if (burgerMenu) {
+      burgerMenu.setAttribute('aria-expanded', String(isOpen));
+    }
+  };
+
+  headerNavs.forEach((nav, navIndex) => {
+    const burgerMenu = nav.querySelector('.burger-menu');
+    if (!burgerMenu) {
+      return;
+    }
+
+    burgerMenu.setAttribute('role', 'button');
+    burgerMenu.setAttribute('tabindex', '0');
+    burgerMenu.setAttribute('aria-label', 'Открыть меню навигации');
+    burgerMenu.setAttribute('aria-controls', `mobile-menu-${navIndex}`);
+    burgerMenu.setAttribute('aria-expanded', 'false');
+
+    const navList = nav.querySelector('ul');
+    if (navList) {
+      navList.id = `mobile-menu-${navIndex}`;
+    }
+
     burgerMenu.addEventListener('click', function(e) {
       e.preventDefault();
-      nav.classList.toggle('open');
+      e.stopPropagation();
+      toggleMenu(nav);
+    });
+
+    burgerMenu.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleMenu(nav);
+      }
     });
 
     // Закрыть меню при клике на ссылку
     const navLinks = nav.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
       link.addEventListener('click', function() {
-        nav.classList.remove('open');
+        closeMenu(nav);
       });
     });
+  });
 
-    // Закрыть меню при клике вне его
-    document.addEventListener('click', function(e) {
-      if (!e.target.closest('nav') && !e.target.closest('.burger-menu')) {
-        nav.classList.remove('open');
+  // Закрыть меню при клике вне него
+  document.addEventListener('click', function(e) {
+    if (!(e.target instanceof Element)) {
+      return;
+    }
+
+    headerNavs.forEach((nav) => {
+      if (!nav.contains(e.target)) {
+        closeMenu(nav);
       }
     });
-  }
+  });
+
+  // На случай смены ориентации/ресайза
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+      headerNavs.forEach(closeMenu);
+    }
+  });
 }
 
 /* ============================================
